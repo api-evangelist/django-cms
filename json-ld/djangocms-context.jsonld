@@ -1,0 +1,199 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "cms": "https://www.django-cms.org/vocab/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "PageContent": {
+      "@id": "schema:WebPage",
+      "@type": "@id"
+    },
+    "title": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "page_title": {
+      "@id": "schema:headline",
+      "@type": "xsd:string"
+    },
+    "menu_title": {
+      "@id": "cms:menuTitle",
+      "@type": "xsd:string"
+    },
+    "meta_description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "redirect": {
+      "@id": "schema:sameAs",
+      "@type": "@id"
+    },
+    "absolute_url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "path": {
+      "@id": "cms:path",
+      "@type": "xsd:string"
+    },
+    "details": {
+      "@id": "schema:mainEntityOfPage",
+      "@type": "@id"
+    },
+    "is_home": {
+      "@id": "cms:isHome",
+      "@type": "xsd:boolean"
+    },
+    "login_required": {
+      "@id": "cms:loginRequired",
+      "@type": "xsd:boolean"
+    },
+    "in_navigation": {
+      "@id": "cms:inNavigation",
+      "@type": "xsd:boolean"
+    },
+    "soft_root": {
+      "@id": "cms:softRoot",
+      "@type": "xsd:boolean"
+    },
+    "template": {
+      "@id": "cms:template",
+      "@type": "xsd:string"
+    },
+    "xframe_options": {
+      "@id": "cms:xframeOptions",
+      "@type": "xsd:string"
+    },
+    "limit_visibility_in_menu": {
+      "@id": "cms:limitVisibilityInMenu",
+      "@type": "xsd:boolean"
+    },
+    "language": {
+      "@id": "schema:inLanguage",
+      "@type": "xsd:string"
+    },
+    "languages": {
+      "@id": "cms:availableLanguages",
+      "@container": "@list"
+    },
+    "is_preview": {
+      "@id": "cms:isPreview",
+      "@type": "xsd:boolean"
+    },
+    "application_namespace": {
+      "@id": "cms:applicationNamespace",
+      "@type": "xsd:string"
+    },
+    "creation_date": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "changed_date": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "placeholders": {
+      "@id": "cms:hasPlaceholder",
+      "@container": "@list"
+    },
+
+    "Placeholder": {
+      "@id": "cms:Placeholder",
+      "@type": "@id"
+    },
+    "slot": {
+      "@id": "cms:slot",
+      "@type": "xsd:string"
+    },
+    "label": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "content": {
+      "@id": "cms:pluginContent",
+      "@container": "@list"
+    },
+    "html": {
+      "@id": "schema:text",
+      "@type": "xsd:string"
+    },
+
+    "Language": {
+      "@id": "schema:Language",
+      "@type": "@id"
+    },
+    "code": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "public": {
+      "@id": "cms:isPublic",
+      "@type": "xsd:boolean"
+    },
+    "fallbacks": {
+      "@id": "cms:fallbackLanguages",
+      "@container": "@list"
+    },
+    "redirect_on_fallback": {
+      "@id": "cms:redirectOnFallback",
+      "@type": "xsd:boolean"
+    },
+    "hide_untranslated": {
+      "@id": "cms:hideUntranslated",
+      "@type": "xsd:boolean"
+    },
+
+    "NavigationNode": {
+      "@id": "schema:SiteNavigationElement",
+      "@type": "@id"
+    },
+    "namespace": {
+      "@id": "cms:menuNamespace",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "api_endpoint": {
+      "@id": "schema:mainEntityOfPage",
+      "@type": "@id"
+    },
+    "visible": {
+      "@id": "cms:isVisible",
+      "@type": "xsd:boolean"
+    },
+    "selected": {
+      "@id": "cms:isSelected",
+      "@type": "xsd:boolean"
+    },
+    "attr": {
+      "@id": "cms:nodeAttributes"
+    },
+    "level": {
+      "@id": "cms:menuLevel",
+      "@type": "xsd:integer"
+    },
+    "children": {
+      "@id": "cms:childNodes",
+      "@container": "@list"
+    },
+
+    "PluginDefinition": {
+      "@id": "cms:PluginDefinition",
+      "@type": "@id"
+    },
+    "plugin_type": {
+      "@id": "cms:pluginType",
+      "@type": "xsd:string"
+    },
+    "properties": {
+      "@id": "cms:pluginProperties"
+    }
+  }
+}

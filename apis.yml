@@ -35,7 +35,11 @@ apis:
       - type: Documentation
         url: https://djangocms-rest.readthedocs.io/
       - type: OpenAPI
-        url: https://github.com/django-cms/djangocms-rest
+        url: https://raw.githubusercontent.com/api-evangelist/django-cms/main/openapi/djangocms-rest-openapi.yml
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-schema/djangocms-page-content-schema.json
+      - type: JSONLD
+        url: https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-ld/djangocms-context.jsonld
       - type: GitHubRepository
         url: https://github.com/django-cms/djangocms-rest
       - type: PyPI

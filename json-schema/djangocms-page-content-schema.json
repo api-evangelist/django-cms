@@ -1,0 +1,198 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-schema/djangocms-page-content-schema.json",
+  "title": "Django CMS Page Content",
+  "description": "JSON Schema for a Django CMS page content object as returned by the djangocms-rest API",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "maxLength": 255,
+      "description": "Page title"
+    },
+    "page_title": {
+      "type": "string",
+      "maxLength": 255,
+      "description": "Page title used in the HTML <title> tag; falls back to title"
+    },
+    "menu_title": {
+      "type": "string",
+      "maxLength": 255,
+      "description": "Title displayed in navigation menus; falls back to title"
+    },
+    "meta_description": {
+      "type": "string",
+      "description": "SEO meta description for the page"
+    },
+    "redirect": {
+      "type": ["string", "null"],
+      "maxLength": 2048,
+      "description": "Redirect URL if configured; null when no redirect is set"
+    },
+    "absolute_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Absolute frontend URL for the page"
+    },
+    "path": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Relative URL path of the page (e.g. 'blog/my-post')"
+    },
+    "details": {
+      "type": "string",
+      "format": "uri",
+      "description": "API endpoint URL for this page"
+    },
+    "is_home": {
+      "type": "boolean",
+      "description": "Whether this is the home/root page"
+    },
+    "login_required": {
+      "type": "boolean",
+      "description": "Whether the page requires authentication to view"
+    },
+    "in_navigation": {
+      "type": "boolean",
+      "description": "Whether the page appears in navigation menus"
+    },
+    "soft_root": {
+      "type": "boolean",
+      "description": "Whether the page acts as a soft root for navigation"
+    },
+    "template": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Template file used to render this page"
+    },
+    "xframe_options": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "X-Frame-Options header value for this page"
+    },
+    "limit_visibility_in_menu": {
+      "type": ["boolean", "null"],
+      "default": false,
+      "description": "Whether menu visibility is restricted by user auth state"
+    },
+    "language": {
+      "type": "string",
+      "maxLength": 10,
+      "description": "Language code for this page content (e.g. 'en', 'de')",
+      "examples": ["en", "de", "fr", "zh-cn"]
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 10
+      },
+      "description": "All languages this page is available in"
+    },
+    "is_preview": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this response was served in preview/draft mode"
+    },
+    "application_namespace": {
+      "type": ["string", "null"],
+      "maxLength": 200,
+      "description": "Application namespace if the page is an apphook; null otherwise"
+    },
+    "creation_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the page was first created"
+    },
+    "changed_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the page was last modified"
+    },
+    "placeholders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Placeholder"
+      },
+      "description": "Ordered list of placeholders defined by the page template"
+    }
+  },
+  "required": [
+    "title",
+    "page_title",
+    "menu_title",
+    "meta_description",
+    "absolute_url",
+    "path",
+    "details",
+    "is_home",
+    "login_required",
+    "in_navigation",
+    "soft_root",
+    "template",
+    "language",
+    "languages",
+    "creation_date",
+    "changed_date"
+  ],
+  "definitions": {
+    "Placeholder": {
+      "type": "object",
+      "title": "Placeholder",
+      "description": "A CMS placeholder containing structured plugin content for a given slot",
+      "properties": {
+        "slot": {
+          "type": "string",
+          "description": "Template slot name identifying this placeholder"
+        },
+        "label": {
+          "type": "string",
+          "description": "Human-readable label for the placeholder"
+        },
+        "language": {
+          "type": "string",
+          "description": "Language code of the placeholder content"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PluginInstance"
+          },
+          "description": "Ordered list of serialized plugin data objects"
+        },
+        "details": {
+          "type": "string",
+          "format": "uri",
+          "description": "Direct API URL for this placeholder"
+        },
+        "html": {
+          "type": "string",
+          "default": "",
+          "description": "Server-rendered HTML for the placeholder (only present when ?html=1 is requested)"
+        }
+      },
+      "required": ["slot", "label", "language", "details"]
+    },
+    "PluginInstance": {
+      "type": "object",
+      "title": "PluginInstance",
+      "description": "A serialized CMS plugin instance within a placeholder",
+      "properties": {
+        "plugin_type": {
+          "type": "string",
+          "description": "Plugin class name (e.g. 'TextPlugin', 'PicturePlugin')"
+        },
+        "pk": {
+          "type": "integer",
+          "description": "Primary key of the plugin instance"
+        },
+        "parent_plugin_type": {
+          "type": ["string", "null"],
+          "description": "Parent plugin type if this is a child plugin; null for root plugins"
+        }
+      },
+      "required": ["plugin_type"],
+      "additionalProperties": true
+    }
+  }
+}
