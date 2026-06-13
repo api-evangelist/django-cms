@@ -1,0 +1,72 @@
+aid: django-cms
+name: Django CMS
+description: Django CMS is an open-source, enterprise-grade content management system built on Django and Python. It provides a REST API via the djangocms-rest package (built on Django REST Framework and drf-spectacular) that exposes pages, plugins, placeholders, navigation menus, breadcrumbs, and content structures as a browsable, read-only JSON/OpenAPI 3 interface. The API enables headless CMS deployments, allowing decoupled frontend applications — SPAs, static site generators, and mobile apps — to consume CMS-managed content with full multi-language and multi-site support.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/django-cms/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - CMS
+  - Content Management
+  - Django
+  - Python
+  - Headless CMS
+  - REST API
+  - Open Source
+  - Pages
+  - Plugins
+  - Placeholders
+apis:
+  - aid: django-cms:djangocms-rest
+    name: djangocms-rest API
+    description: Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Exposes endpoints for languages, pages, page trees, page search, placeholders, plugins, navigation menus, breadcrumbs, and a health check. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.
+    humanURL: https://djangocms-rest.readthedocs.io/
+    baseURL: https://example.com/api/
+    tags:
+      - Pages
+      - Plugins
+      - Placeholders
+      - Navigation
+      - Headless CMS
+      - REST
+      - OpenAPI
+    properties:
+      - type: Documentation
+        url: https://djangocms-rest.readthedocs.io/
+      - type: OpenAPI
+        url: https://github.com/django-cms/djangocms-rest
+      - type: GitHubRepository
+        url: https://github.com/django-cms/djangocms-rest
+      - type: PyPI
+        url: https://pypi.org/project/djangocms-rest/
+    contact:
+      - FN: Django CMS Association
+        email: info@django-cms.org
+        url: https://www.django-cms.org/en/
+common:
+  - type: Website
+    url: https://www.django-cms.org/en/
+  - type: Documentation
+    url: https://docs.django-cms.org/en/latest/
+  - type: GitHubOrg
+    url: https://github.com/django-cms
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/django-cms-association
+  - type: Blog
+    url: https://www.django-cms.org/en/blog/
+  - type: Pricing
+    url: https://www.django-cms.org/en/
+  - type: StatusPage
+    url: https://status.django-cms.org/
+  - type: X
+    url: https://x.com/djangocms
+  - type: Plans
+    url: plans/django-cms-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/django-cms-rate-limits.yml
+  - type: FinOps
+    url: finops/django-cms-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

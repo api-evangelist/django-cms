@@ -1,0 +1,50 @@
+name: Django CMS FinOps
+description: Django CMS is free and open-source software (BSD-3-Clause). Financial operations considerations relate entirely to self-hosting infrastructure costs, optional commercial support, and Association membership rather than any per-seat or per-API-call licensing fees.
+url: https://www.django-cms.org/en/
+software_cost:
+  license: BSD-3-Clause
+  cost: 0
+  currency: USD
+  notes: No license fees. The software is freely available at github.com/django-cms/django-cms and via pip install django-cms.
+infrastructure_costs:
+  description: All costs are determined by the operator's chosen hosting environment for the Django application and its dependencies.
+  components:
+    - name: Web/Application Server
+      examples:
+        - Gunicorn + NGINX
+        - uWSGI + Apache
+      notes: Typical Django hosting; cost varies by provider and scale.
+    - name: Database
+      examples:
+        - PostgreSQL (recommended)
+        - MySQL/MariaDB
+        - SQLite (dev only)
+      notes: PostgreSQL is the recommended production database.
+    - name: Cache Layer (optional but recommended for API)
+      examples:
+        - Redis
+        - Memcached
+      notes: djangocms-rest is compatible with Redis and Memcached caching backends for improved API performance.
+    - name: Static/Media Storage
+      examples:
+        - AWS S3
+        - Cloudflare R2
+        - Local filesystem
+      notes: Media files and static assets require storage infrastructure.
+    - name: Search (optional)
+      examples:
+        - Elasticsearch
+        - Solr
+      notes: Full-text page search endpoint (/api/{language}/page_search/) may use Django search backends.
+operational_considerations:
+  - Django CMS has no metered API billing — there are no per-call or per-user fees for the REST API.
+  - Cost optimization focuses on infrastructure right-sizing and caching rather than API usage reduction.
+  - djangocms-rest is read-only, reducing database write load from API traffic.
+  - The Django CMS Association accepts donations and corporate memberships to fund ongoing open-source development.
+association_membership:
+  url: https://www.django-cms.org/en/
+  description: Optional financial contributions to the non-profit Django CMS Association (Switzerland) that maintains the project.
+  tiers:
+    - Individual members
+    - Silver members (agencies/SMBs)
+    - Gold members (large enterprises)

@@ -1,0 +1,39 @@
+name: Django CMS Plans & Pricing
+description: Django CMS is an open-source content management system released under the BSD-3-Clause license. There are no commercial pricing tiers for the software itself — it is free to download, use, and modify. The Django CMS Association offers membership tiers for organizations and individuals who wish to support the long-term development of the project.
+url: https://www.django-cms.org/en/
+plans:
+  - name: Open Source (Community)
+    description: Full access to django CMS source code under the BSD-3-Clause license. Self-hosted, self-managed. Community support via Discord, Stack Overflow, and GitHub Issues.
+    price: 0
+    currency: USD
+    billing: one-time
+    features:
+      - Full django CMS source code
+      - All core plugins included
+      - Multi-language and multi-site support
+      - REST API via djangocms-rest package
+      - Community support (Discord, GitHub, Stack Overflow)
+      - BSD-3-Clause license — commercial use permitted
+  - name: Django CMS Association Membership (Individual)
+    description: Membership supporting the non-profit Django CMS Association, which funds ongoing development. Grants community recognition and voting rights.
+    price: varies
+    currency: EUR
+    billing: annual
+    features:
+      - Voting rights in Association governance
+      - Recognition in community channels
+      - Supporting long-term project development
+  - name: Django CMS Association Membership (Corporate/Silver/Gold)
+    description: Corporate-level membership tiers for agencies and enterprises wishing to sponsor and support the Django CMS project at scale.
+    price: varies
+    currency: EUR
+    billing: annual
+    features:
+      - Logo placement on django-cms.org
+      - Priority recognition in community
+      - Direct support for project roadmap
+      - Networking within Association
+notes:
+  - Django CMS itself carries no license fees. Costs are typically from self-hosting infrastructure, custom development, or optional paid support from third-party service providers.
+  - djangocms-rest (REST API package) is also free and open-source under BSD-3-Clause.
+  - For enterprise support, third-party vendors and agencies in the community offer commercial service contracts.

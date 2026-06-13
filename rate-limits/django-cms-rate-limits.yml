@@ -1,0 +1,19 @@
+name: Django CMS Rate Limits
+description: Django CMS is self-hosted open-source software. The djangocms-rest package, which provides the REST API layer, does not impose any built-in rate limits. Rate limiting is entirely the responsibility of the operator and must be configured at the infrastructure or application level using Django middleware, reverse-proxy configuration, or DRF throttle classes.
+url: https://github.com/django-cms/djangocms-rest
+limits:
+  - scope: REST API (djangocms-rest)
+    type: none-enforced-by-default
+    description: No rate limits are enforced by djangocms-rest out of the box. Django REST Framework throttle classes can be configured per-deployment.
+    enforcement: operator-defined
+    configuration:
+      - option: DEFAULT_THROTTLE_CLASSES
+        framework: Django REST Framework
+        description: Set throttle classes such as AnonRateThrottle or UserRateThrottle in DRF settings.
+        example: "REST_FRAMEWORK = { 'DEFAULT_THROTTLE_CLASSES': ['rest_framework.throttling.AnonRateThrottle'], 'DEFAULT_THROTTLE_RATES': {'anon': '100/day'} }"
+      - option: Reverse proxy throttling
+        description: NGINX or Apache can be used for connection rate limiting upstream of the Django application.
+notes:
+  - Since django CMS is self-hosted, all capacity and rate-limiting decisions are made by the deploying organization.
+  - The API is read-only by design (djangocms-rest exposes content in read-only mode), which reduces risk from high-volume requests but does not substitute for rate limiting.
+  - For headless deployments with high traffic, caching (Redis, Memcached) is the primary recommended mitigation strategy rather than rate limiting.
