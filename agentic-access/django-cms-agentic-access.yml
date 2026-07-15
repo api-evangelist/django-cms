@@ -1,0 +1,244 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/djangocms-rest-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 23
+  by_action_class:
+    connected: 23
+  by_consequence:
+    read: 23
+  human_in_the_loop_required: 0
+operations:
+- path: /healthcheck/
+  method: get
+  operationId: healthcheck_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /languages/
+  method: get
+  operationId: language_list_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/pages-tree/
+  method: get
+  operationId: page_tree_list_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/pages-list/
+  method: get
+  operationId: page_list_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/pages/
+  method: get
+  operationId: page_root_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/pages/{path}/
+  method: get
+  operationId: page_detail_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/page_search/
+  method: get
+  operationId: page_search_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/placeholders/{content_type_id}/{object_id}/{slot}/
+  method: get
+  operationId: placeholder_detail_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /plugins/
+  method: get
+  operationId: plugin_list_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/menu/
+  method: get
+  operationId: menu_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/menu/{from_level}/{to_level}/{extra_inactive}/{extra_active}/
+  method: get
+  operationId: menu_levels_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/menu/{from_level}/{to_level}/{extra_inactive}/{extra_active}/{path}/
+  method: get
+  operationId: menu_levels_path_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/menu/{root_id}/{from_level}/{to_level}/{extra_inactive}/{extra_active}/
+  method: get
+  operationId: menu_root_levels_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/menu/{root_id}/{from_level}/{to_level}/{extra_inactive}/{extra_active}/{path}/
+  method: get
+  operationId: menu_root_levels_path_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/submenu/{levels}/{root_level}/{nephews}/
+  method: get
+  operationId: submenu_levels_root_nephews_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/submenu/{levels}/{root_level}/{nephews}/{path}/
+  method: get
+  operationId: submenu_levels_root_nephews_path_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/submenu/{levels}/{root_level}/
+  method: get
+  operationId: submenu_levels_root_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/submenu/{levels}/
+  method: get
+  operationId: submenu_levels_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/submenu/
+  method: get
+  operationId: submenu_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/breadcrumbs/
+  method: get
+  operationId: breadcrumbs_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/breadcrumbs/{path}/
+  method: get
+  operationId: breadcrumbs_path_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/breadcrumbs/{start_level}/
+  method: get
+  operationId: breadcrumbs_level_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /{language}/breadcrumbs/{start_level}/{path}/
+  method: get
+  operationId: breadcrumbs_level_path_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

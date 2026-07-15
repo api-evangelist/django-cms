@@ -49,6 +49,8 @@ apis:
         email: info@django-cms.org
         url: https://www.django-cms.org/en/
 common:
+  - type: AgenticAccess
+    url: agentic-access/django-cms-agentic-access.yml
   - type: DomainSecurity
     url: security/django-cms-domain-security.yml
   - type: Website
