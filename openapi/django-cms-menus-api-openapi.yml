@@ -1,0 +1,389 @@
+openapi: 3.0.3
+info:
+  title: djangocms-rest Breadcrumbs Menus API
+  description: Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.
+  version: 1.0.0
+  contact:
+    name: Django CMS Association
+    email: info@django-cms.org
+    url: https://www.django-cms.org/en/
+  license:
+    name: BSD 3-Clause
+    url: https://github.com/django-cms/djangocms-rest/blob/main/LICENSE
+  x-logo:
+    url: https://www.django-cms.org/static/img/django-cms-logo.svg
+servers:
+- url: https://example.com/api
+  description: Default server (customize per deployment)
+tags:
+- name: Menus
+  description: Navigation menu structures
+paths:
+  /{language}/menu/:
+    get:
+      operationId: menu_retrieve
+      summary: Menu (root)
+      description: Returns the root-level navigation menu structure for the given language.
+      tags:
+      - Menus
+      parameters:
+      - $ref: '#/components/parameters/language'
+      - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+        '404':
+          description: Language not found or page not found
+  /{language}/menu/{from_level}/{to_level}/{extra_inactive}/{extra_active}/:
+    get:
+      operationId: menu_levels_retrieve
+      summary: Menu with level controls
+      description: Returns the navigation menu with explicit level and active-node controls.
+      tags:
+      - Menus
+      parameters:
+      - $ref: '#/components/parameters/language'
+      - $ref: '#/components/parameters/from_level'
+      - $ref: '#/components/parameters/to_level'
+      - $ref: '#/components/parameters/extra_inactive'
+      - $ref: '#/components/parameters/extra_active'
+      - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+  /{language}/menu/{from_level}/{to_level}/{extra_inactive}/{extra_active}/{path}/:
+    get:
+      operationId: menu_levels_path_retrieve
+      summary: Menu with level controls and page path
+      description: Returns the navigation menu for a specific page path with level controls.
+      tags:
+      - Menus
+      parameters:
+      - $ref: '#/components/parameters/language'
+      - $ref: '#/components/parameters/from_level'
+      - $ref: '#/components/parameters/to_level'
+      - $ref: '#/components/parameters/extra_inactive'
+      - $ref: '#/components/parameters/extra_active'
+      - name: path
+        in: path
+        required: true
+        description: URL path of the current page for selected/active state
+        schema:
+          type: string
+      - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+  /{language}/menu/{root_id}/{from_level}/{to_level}/{extra_inactive}/{extra_active}/:
+    get:
+      operationId: menu_root_levels_retrieve
+      summary: Menu from root node with level controls
+      description: Returns a sub-menu anchored at a specific root node (by reverse_id).
+      tags:
+      - Menus
+      parameters:
+      - $ref: '#/components/parameters/language'
+      - $ref: '#/components/parameters/root_id'
+      - $ref: '#/components/parameters/from_level'
+      - $ref: '#/components/parameters/to_level'
+      - $ref: '#/components/parameters/extra_inactive'
+      - $ref: '#/components/parameters/extra_active'
+      - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+        '404':
+          description: Root node not found
+  /{language}/menu/{root_id}/{from_level}/{to_level}/{extra_inactive}/{extra_active}/{path}/:
+    get:
+      operationId: menu_root_levels_path_retrieve
+      summary: Menu from root node with level controls and page path
+      description: Returns a sub-menu anchored at a root node for a specific page path.
+      tags:
+      - Menus
+      parameters:
+      - $ref: '#/components/parameters/language'
+      - $ref: '#/components/parameters/root_id'
+      - $ref: '#/components/parameters/from_level'
+      - $ref: '#/components/parameters/to_level'
+      - $ref: '#/components/parameters/extra_inactive'
+      - $ref: '#/components/parameters/extra_active'
+      - name: path
+        in: path
+        required: true
+        description: URL path of the current page
+        schema:
+          type: string
+      - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+  /{language}/submenu/{levels}/{root_level}/{nephews}/:
+    get:
+      operationId: submenu_levels_root_nephews_retrieve
+      summary: Submenu
+      description: Returns a submenu for the given language with level, root_level, and nephews controls.
+      tags:
+      - Menus
+      parameters:
+      - $ref: '#/components/parameters/language'
+      - $ref: '#/components/parameters/levels'
+      - $ref: '#/components/parameters/root_level'
+      - $ref: '#/components/parameters/nephews'
+      - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Submenu navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+  /{language}/submenu/{levels}/{root_level}/{nephews}/{path}/:
+    get:
+      operationId: submenu_levels_root_nephews_path_retrieve
+      summary: Submenu with path
+      description: Returns a submenu for the given path with level, root_level, and nephews controls.
+      tags:
+      - Menus
+      parameters:
+      - $ref: '#/components/parameters/language'
+      - $ref: '#/components/parameters/levels'
+      - $ref: '#/components/parameters/root_level'
+      - $ref: '#/components/parameters/nephews'
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Submenu navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+  /{language}/submenu/{levels}/{root_level}/:
+    get:
+      operationId: submenu_levels_root_retrieve
+      summary: Submenu (levels + root_level)
+      description: Returns a submenu with levels and root_level controls.
+      tags:
+      - Menus
+      parameters:
+      - $ref: '#/components/parameters/language'
+      - $ref: '#/components/parameters/levels'
+      - $ref: '#/components/parameters/root_level'
+      - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Submenu navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+  /{language}/submenu/{levels}/:
+    get:
+      operationId: submenu_levels_retrieve
+      summary: Submenu (levels only)
+      description: Returns a submenu limited to the given number of levels.
+      tags:
+      - Menus
+      parameters:
+      - $ref: '#/components/parameters/language'
+      - $ref: '#/components/parameters/levels'
+      - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Submenu navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+  /{language}/submenu/:
+    get:
+      operationId: submenu_retrieve
+      summary: Submenu (default)
+      description: Returns the default submenu for the current context.
+      tags:
+      - Menus
+      parameters:
+      - $ref: '#/components/parameters/language'
+      - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Submenu navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+components:
+  parameters:
+    nephews:
+      name: nephews
+      in: path
+      required: true
+      description: Number of sibling levels to include in submenu
+      schema:
+        type: integer
+    root_level:
+      name: root_level
+      in: path
+      required: true
+      description: The root level for the submenu
+      schema:
+        type: integer
+    preview:
+      name: preview
+      in: query
+      description: Set to 1 or true to include draft/unpublished content (requires appropriate permissions)
+      schema:
+        type: string
+        enum:
+        - '0'
+        - '1'
+        - 'true'
+        - 'false'
+    from_level:
+      name: from_level
+      in: path
+      required: true
+      description: Starting menu level (0 = root)
+      schema:
+        type: integer
+        default: 0
+    extra_inactive:
+      name: extra_inactive
+      in: path
+      required: true
+      description: Extra levels to show for inactive branches
+      schema:
+        type: integer
+        default: 0
+    extra_active:
+      name: extra_active
+      in: path
+      required: true
+      description: Extra levels to show for active branches
+      schema:
+        type: integer
+        default: 1000
+    to_level:
+      name: to_level
+      in: path
+      required: true
+      description: Maximum menu level to include
+      schema:
+        type: integer
+        default: 100
+    root_id:
+      name: root_id
+      in: path
+      required: true
+      description: The reverse_id of the root page node to anchor the menu
+      schema:
+        type: string
+    levels:
+      name: levels
+      in: path
+      required: true
+      description: Number of submenu levels to include
+      schema:
+        type: integer
+    language:
+      name: language
+      in: path
+      required: true
+      description: Language code (e.g. "en", "de", "fr")
+      schema:
+        type: string
+        example: en
+  schemas:
+    NavigationNode:
+      type: object
+      description: A navigation menu node, optionally with nested children
+      properties:
+        namespace:
+          type: string
+          nullable: true
+          description: Menu namespace (for apphook menus)
+        title:
+          type: string
+          description: Display title for the menu item
+        url:
+          type: string
+          format: uri
+          nullable: true
+          description: Absolute frontend URL for the menu item
+        api_endpoint:
+          type: string
+          format: uri
+          nullable: true
+          description: API URL to fetch full page detail for this menu item
+        visible:
+          type: boolean
+          description: Whether this node is visible in the menu
+        selected:
+          type: boolean
+          description: Whether this node represents the current page
+        attr:
+          type: object
+          nullable: true
+          description: Additional attributes from the menu template tag (e.g. is_home, auth_required)
+          additionalProperties: true
+        level:
+          type: integer
+          nullable: true
+          description: Nesting level of this menu node (0 = root)
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/NavigationNode'
+          description: Child navigation nodes
+      required:
+      - title
+      - visible
+      - selected
+externalDocs:
+  description: djangocms-rest Documentation
+  url: https://djangocms-rest.readthedocs.io/

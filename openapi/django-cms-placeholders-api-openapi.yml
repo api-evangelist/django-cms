@@ -1,0 +1,124 @@
+openapi: 3.0.3
+info:
+  title: djangocms-rest Breadcrumbs Placeholders API
+  description: Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.
+  version: 1.0.0
+  contact:
+    name: Django CMS Association
+    email: info@django-cms.org
+    url: https://www.django-cms.org/en/
+  license:
+    name: BSD 3-Clause
+    url: https://github.com/django-cms/djangocms-rest/blob/main/LICENSE
+  x-logo:
+    url: https://www.django-cms.org/static/img/django-cms-logo.svg
+servers:
+- url: https://example.com/api
+  description: Default server (customize per deployment)
+tags:
+- name: Placeholders
+  description: Placeholder content with nested plugin data
+paths:
+  /{language}/placeholders/{content_type_id}/{object_id}/{slot}/:
+    get:
+      operationId: placeholder_detail_retrieve
+      summary: Placeholder detail
+      description: Retrieve the content of a placeholder by content type, object ID, and slot name. The response includes the nested plugin data as structured JSON. Add ?html=1 to also receive server-rendered HTML output.
+      tags:
+      - Placeholders
+      parameters:
+      - $ref: '#/components/parameters/language'
+      - name: content_type_id
+        in: path
+        required: true
+        description: Django content type ID for the placeholder's owner model
+        schema:
+          type: integer
+      - name: object_id
+        in: path
+        required: true
+        description: Primary key of the placeholder's owner object
+        schema:
+          type: integer
+      - name: slot
+        in: path
+        required: true
+        description: Slot name of the placeholder
+        schema:
+          type: string
+      - $ref: '#/components/parameters/preview'
+      - $ref: '#/components/parameters/html'
+      responses:
+        '200':
+          description: Placeholder content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Placeholder'
+        '404':
+          description: Placeholder not found
+components:
+  parameters:
+    preview:
+      name: preview
+      in: query
+      description: Set to 1 or true to include draft/unpublished content (requires appropriate permissions)
+      schema:
+        type: string
+        enum:
+        - '0'
+        - '1'
+        - 'true'
+        - 'false'
+    html:
+      name: html
+      in: query
+      description: Set to 1 to include server-rendered HTML for placeholder content
+      schema:
+        type: string
+        enum:
+        - '0'
+        - '1'
+    language:
+      name: language
+      in: path
+      required: true
+      description: Language code (e.g. "en", "de", "fr")
+      schema:
+        type: string
+        example: en
+  schemas:
+    Placeholder:
+      type: object
+      description: A placeholder containing structured plugin content
+      properties:
+        slot:
+          type: string
+          description: Template slot name for this placeholder
+        label:
+          type: string
+          description: Human-readable label for the placeholder
+        language:
+          type: string
+          description: Language code of the content
+        content:
+          type: array
+          items:
+            type: object
+          description: Nested list of serialized plugin data objects. Each object has a "plugin_type" field identifying its type, plus plugin-specific properties.
+        details:
+          type: string
+          format: uri
+          description: API URL to retrieve this placeholder directly
+        html:
+          type: string
+          default: ''
+          description: Server-rendered HTML output (only present when ?html=1 is requested)
+      required:
+      - slot
+      - label
+      - language
+      - details
+externalDocs:
+  description: djangocms-rest Documentation
+  url: https://djangocms-rest.readthedocs.io/

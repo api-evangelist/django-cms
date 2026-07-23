@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: djangocms-rest Breadcrumbs Health API
+  description: Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.
+  version: 1.0.0
+  contact:
+    name: Django CMS Association
+    email: info@django-cms.org
+    url: https://www.django-cms.org/en/
+  license:
+    name: BSD 3-Clause
+    url: https://github.com/django-cms/djangocms-rest/blob/main/LICENSE
+  x-logo:
+    url: https://www.django-cms.org/static/img/django-cms-logo.svg
+servers:
+- url: https://example.com/api
+  description: Default server (customize per deployment)
+tags:
+- name: Health
+  description: Health check endpoint for monitoring
+paths:
+  /healthcheck/:
+    get:
+      operationId: healthcheck_retrieve
+      summary: Health check
+      description: Minimal health check endpoint for monitoring tools.
+      tags:
+      - Health
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheck'
+              example:
+                status: ok
+components:
+  schemas:
+    HealthCheck:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+          description: Service health status
+      required:
+      - status
+externalDocs:
+  description: djangocms-rest Documentation
+  url: https://djangocms-rest.readthedocs.io/

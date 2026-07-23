@@ -1,0 +1,83 @@
+openapi: 3.0.3
+info:
+  title: djangocms-rest Breadcrumbs Languages API
+  description: Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.
+  version: 1.0.0
+  contact:
+    name: Django CMS Association
+    email: info@django-cms.org
+    url: https://www.django-cms.org/en/
+  license:
+    name: BSD 3-Clause
+    url: https://github.com/django-cms/djangocms-rest/blob/main/LICENSE
+  x-logo:
+    url: https://www.django-cms.org/static/img/django-cms-logo.svg
+servers:
+- url: https://example.com/api
+  description: Default server (customize per deployment)
+tags:
+- name: Languages
+  description: Site language configuration
+paths:
+  /languages/:
+    get:
+      operationId: language_list_retrieve
+      summary: List available languages
+      description: Returns all languages configured for the current site.
+      tags:
+      - Languages
+      responses:
+        '200':
+          description: List of configured languages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Language'
+        '404':
+          description: No languages configured for the current site
+components:
+  schemas:
+    Language:
+      type: object
+      description: A language configured for the current Django CMS site
+      properties:
+        code:
+          type: string
+          maxLength: 10
+          description: BCP 47 language code (e.g. "en", "de-ch")
+          example: en
+        name:
+          type: string
+          maxLength: 100
+          description: Human-readable language name
+          example: English
+        public:
+          type: boolean
+          description: Whether the language is publicly accessible
+        fallbacks:
+          type: array
+          items:
+            type: string
+            maxLength: 10
+          description: Ordered list of fallback language codes
+          example:
+          - de
+          - fr
+        redirect_on_fallback:
+          type: boolean
+          description: Whether to redirect when serving fallback language content
+        hide_untranslated:
+          type: boolean
+          description: Whether to hide pages that are not translated in this language
+      required:
+      - code
+      - name
+      - public
+      - fallbacks
+      - redirect_on_fallback
+      - hide_untranslated
+externalDocs:
+  description: djangocms-rest Documentation
+  url: https://djangocms-rest.readthedocs.io/

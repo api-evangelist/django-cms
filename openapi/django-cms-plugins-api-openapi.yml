@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: djangocms-rest Breadcrumbs Plugins API
+  description: Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.
+  version: 1.0.0
+  contact:
+    name: Django CMS Association
+    email: info@django-cms.org
+    url: https://www.django-cms.org/en/
+  license:
+    name: BSD 3-Clause
+    url: https://github.com/django-cms/djangocms-rest/blob/main/LICENSE
+  x-logo:
+    url: https://www.django-cms.org/static/img/django-cms-logo.svg
+servers:
+- url: https://example.com/api
+  description: Default server (customize per deployment)
+tags:
+- name: Plugins
+  description: Plugin type definitions and schema
+paths:
+  /plugins/:
+    get:
+      operationId: plugin_list_retrieve
+      summary: Plugin definitions
+      description: Returns definitions of all registered CMS plugin types, including their property schemas for use in frontend code generation and type-safe clients.
+      tags:
+      - Plugins
+      responses:
+        '200':
+          description: List of plugin type definitions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PluginDefinition'
+components:
+  schemas:
+    PluginDefinition:
+      type: object
+      description: Schema definition for a registered CMS plugin type
+      properties:
+        plugin_type:
+          type: string
+          description: Unique identifier for the plugin type (e.g. "TextPlugin")
+        title:
+          type: string
+          description: Human-readable plugin name
+        type:
+          type: string
+          description: JSON Schema type (typically "object")
+          example: object
+        properties:
+          type: object
+          description: JSON Schema property definitions for the plugin's fields. Each key is a field name; the value is a JSON Schema descriptor.
+          additionalProperties:
+            type: object
+      required:
+      - plugin_type
+      - title
+      - type
+      - properties
+externalDocs:
+  description: djangocms-rest Documentation
+  url: https://djangocms-rest.readthedocs.io/
