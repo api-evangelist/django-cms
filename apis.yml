@@ -1,7 +1,19 @@
 aid: django-cms
 name: Django CMS
 description: Django CMS is an open-source, enterprise-grade content management system built on Django and Python. It provides a REST API via the djangocms-rest package (built on Django REST Framework and drf-spectacular) that exposes pages, plugins, placeholders, navigation menus, breadcrumbs, and content structures as a browsable, read-only JSON/OpenAPI 3 interface. The API enables headless CMS deployments, allowing decoupled frontend applications — SPAs, static site generators, and mobile apps — to consume CMS-managed content with full multi-language and multi-site support.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/django-cms.png
 url: https://raw.githubusercontent.com/api-evangelist/django-cms/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -18,36 +30,160 @@ tags:
   - Plugins
   - Placeholders
 apis:
-  - aid: django-cms:djangocms-rest
-    name: djangocms-rest API
-    description: Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Exposes endpoints for languages, pages, page trees, page search, placeholders, plugins, navigation menus, breadcrumbs, and a health check. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.
-    humanURL: https://djangocms-rest.readthedocs.io/
-    baseURL: https://example.com/api/
-    tags:
-      - Pages
-      - Plugins
-      - Placeholders
-      - Navigation
-      - Headless CMS
-      - REST
-      - OpenAPI
-    properties:
-      - type: Documentation
-        url: https://djangocms-rest.readthedocs.io/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/django-cms/main/openapi/djangocms-rest-openapi.yml
-      - type: JSONSchema
-        url: https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-schema/djangocms-page-content-schema.json
-      - type: JSONLD
-        url: https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-ld/djangocms-context.jsonld
-      - type: GitHubRepository
-        url: https://github.com/django-cms/djangocms-rest
-      - type: PyPI
-        url: https://pypi.org/project/djangocms-rest/
-    contact:
-      - FN: Django CMS Association
-        email: info@django-cms.org
-        url: https://www.django-cms.org/en/
+- aid: django-cms:django-cms-breadcrumbs-api
+  name: Django CMS Breadcrumbs API
+  description: Page breadcrumb trails
+  humanURL: https://djangocms-rest.readthedocs.io/
+  baseURL: https://example.com/api/
+  tags:
+  - Breadcrumbs
+  properties:
+  - type: OpenAPI
+    url: openapi/django-cms-breadcrumbs-api-openapi.yml
+  - type: Documentation
+    url: https://djangocms-rest.readthedocs.io/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-schema/djangocms-page-content-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-ld/djangocms-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/django-cms/djangocms-rest
+  - type: PyPI
+    url: https://pypi.org/project/djangocms-rest/
+- aid: django-cms:django-cms-health-api
+  name: Django CMS Health API
+  description: Health check endpoint for monitoring
+  humanURL: https://djangocms-rest.readthedocs.io/
+  baseURL: https://example.com/api/
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/django-cms-health-api-openapi.yml
+  - type: Documentation
+    url: https://djangocms-rest.readthedocs.io/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-schema/djangocms-page-content-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-ld/djangocms-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/django-cms/djangocms-rest
+  - type: PyPI
+    url: https://pypi.org/project/djangocms-rest/
+- aid: django-cms:django-cms-languages-api
+  name: Django CMS Languages API
+  description: Site language configuration
+  humanURL: https://djangocms-rest.readthedocs.io/
+  baseURL: https://example.com/api/
+  tags:
+  - Languages
+  properties:
+  - type: OpenAPI
+    url: openapi/django-cms-languages-api-openapi.yml
+  - type: Documentation
+    url: https://djangocms-rest.readthedocs.io/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-schema/djangocms-page-content-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-ld/djangocms-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/django-cms/djangocms-rest
+  - type: PyPI
+    url: https://pypi.org/project/djangocms-rest/
+- aid: django-cms:django-cms-menus-api
+  name: Django CMS Menus API
+  description: Navigation menu structures
+  humanURL: https://djangocms-rest.readthedocs.io/
+  baseURL: https://example.com/api/
+  tags:
+  - Menus
+  properties:
+  - type: OpenAPI
+    url: openapi/django-cms-menus-api-openapi.yml
+  - type: Documentation
+    url: https://djangocms-rest.readthedocs.io/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-schema/djangocms-page-content-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-ld/djangocms-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/django-cms/djangocms-rest
+  - type: PyPI
+    url: https://pypi.org/project/djangocms-rest/
+- aid: django-cms:django-cms-pages-api
+  name: Django CMS Pages API
+  description: CMS page content and tree structure
+  humanURL: https://djangocms-rest.readthedocs.io/
+  baseURL: https://example.com/api/
+  tags:
+  - Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/django-cms-pages-api-openapi.yml
+  - type: Documentation
+    url: https://djangocms-rest.readthedocs.io/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-schema/djangocms-page-content-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-ld/djangocms-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/django-cms/djangocms-rest
+  - type: PyPI
+    url: https://pypi.org/project/djangocms-rest/
+- aid: django-cms:django-cms-placeholders-api
+  name: Django CMS Placeholders API
+  description: Placeholder content with nested plugin data
+  humanURL: https://djangocms-rest.readthedocs.io/
+  baseURL: https://example.com/api/
+  tags:
+  - Placeholders
+  properties:
+  - type: OpenAPI
+    url: openapi/django-cms-placeholders-api-openapi.yml
+  - type: Documentation
+    url: https://djangocms-rest.readthedocs.io/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-schema/djangocms-page-content-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-ld/djangocms-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/django-cms/djangocms-rest
+  - type: PyPI
+    url: https://pypi.org/project/djangocms-rest/
+- aid: django-cms:django-cms-plugins-api
+  name: Django CMS Plugins API
+  description: Plugin type definitions and schema
+  humanURL: https://djangocms-rest.readthedocs.io/
+  baseURL: https://example.com/api/
+  tags:
+  - Plugins
+  properties:
+  - type: OpenAPI
+    url: openapi/django-cms-plugins-api-openapi.yml
+  - type: Documentation
+    url: https://djangocms-rest.readthedocs.io/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-schema/djangocms-page-content-schema.json
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-ld/djangocms-context.jsonld
+  - type: GitHubRepository
+    url: https://github.com/django-cms/djangocms-rest
+  - type: PyPI
+    url: https://pypi.org/project/djangocms-rest/
 common:
   - type: AgenticAccess
     url: agentic-access/django-cms-agentic-access.yml
