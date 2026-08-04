@@ -1,0 +1,997 @@
+openapi: 3.0.3
+info:
+  title: djangocms-rest API
+  description: >-
+    Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume
+    CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via
+    drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible
+    with Redis/Memcached caching.
+  version: 1.0.0
+  contact:
+    name: Django CMS Association
+    email: info@django-cms.org
+    url: https://www.django-cms.org/en/
+  license:
+    name: BSD 3-Clause
+    url: https://github.com/django-cms/djangocms-rest/blob/main/LICENSE
+  x-logo:
+    url: https://www.django-cms.org/static/img/django-cms-logo.svg
+externalDocs:
+  description: djangocms-rest Documentation
+  url: https://djangocms-rest.readthedocs.io/
+servers:
+  - url: https://example.com/api
+    description: Default server (customize per deployment)
+
+tags:
+  - name: Health
+    description: Health check endpoint for monitoring
+  - name: Languages
+    description: Site language configuration
+  - name: Pages
+    description: CMS page content and tree structure
+  - name: Placeholders
+    description: Placeholder content with nested plugin data
+  - name: Plugins
+    description: Plugin type definitions and schema
+  - name: Menus
+    description: Navigation menu structures
+  - name: Breadcrumbs
+    description: Page breadcrumb trails
+
+paths:
+  /healthcheck/:
+    get:
+      operationId: healthcheck_retrieve
+      summary: Health check
+      description: Minimal health check endpoint for monitoring tools.
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheck'
+              example:
+                status: ok
+
+  /languages/:
+    get:
+      operationId: language_list_retrieve
+      summary: List available languages
+      description: Returns all languages configured for the current site.
+      tags:
+        - Languages
+      responses:
+        '200':
+          description: List of configured languages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Language'
+        '404':
+          description: No languages configured for the current site
+
+  /{language}/pages-tree/:
+    get:
+      operationId: page_tree_list_retrieve
+      summary: Page tree
+      description: Returns all pages for the given language as a nested tree structure.
+      tags:
+        - Pages
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Nested page tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PageMeta'
+        '404':
+          description: Language not found or no pages available
+
+  /{language}/pages-list/:
+    get:
+      operationId: page_list_retrieve
+      summary: Flat page list
+      description: Returns a paginated flat list of all pages for the given language.
+      tags:
+        - Pages
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/preview'
+        - name: limit
+          in: query
+          description: Number of results to return per page
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Paginated page list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPageList'
+        '404':
+          description: Language not found
+
+  /{language}/pages/:
+    get:
+      operationId: page_root_retrieve
+      summary: Root page detail
+      description: Retrieve the root (home) page for the given language, including its placeholders.
+      tags:
+        - Pages
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/preview'
+        - $ref: '#/components/parameters/html'
+      responses:
+        '200':
+          description: Page content with placeholders
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageContent'
+        '404':
+          description: Page not found
+
+  /{language}/pages/{path}/:
+    get:
+      operationId: page_detail_retrieve
+      summary: Page detail by path
+      description: Retrieve a specific page by its URL path for the given language, including its placeholders.
+      tags:
+        - Pages
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - name: path
+          in: path
+          required: true
+          description: URL path of the page (e.g. "blog/my-post")
+          schema:
+            type: string
+        - $ref: '#/components/parameters/preview'
+        - $ref: '#/components/parameters/html'
+      responses:
+        '200':
+          description: Page content with placeholders
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageContent'
+        '404':
+          description: Page not found
+
+  /{language}/page_search/:
+    get:
+      operationId: page_search_retrieve
+      summary: Search pages
+      description: Search pages by a query string for the given language.
+      tags:
+        - Pages
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - name: q
+          in: query
+          required: true
+          description: Search query string
+          schema:
+            type: string
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: List of matching pages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PageList'
+        '404':
+          description: Language not found
+
+  /{language}/placeholders/{content_type_id}/{object_id}/{slot}/:
+    get:
+      operationId: placeholder_detail_retrieve
+      summary: Placeholder detail
+      description: >-
+        Retrieve the content of a placeholder by content type, object ID, and slot name.
+        The response includes the nested plugin data as structured JSON.
+        Add ?html=1 to also receive server-rendered HTML output.
+      tags:
+        - Placeholders
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - name: content_type_id
+          in: path
+          required: true
+          description: Django content type ID for the placeholder's owner model
+          schema:
+            type: integer
+        - name: object_id
+          in: path
+          required: true
+          description: Primary key of the placeholder's owner object
+          schema:
+            type: integer
+        - name: slot
+          in: path
+          required: true
+          description: Slot name of the placeholder
+          schema:
+            type: string
+        - $ref: '#/components/parameters/preview'
+        - $ref: '#/components/parameters/html'
+      responses:
+        '200':
+          description: Placeholder content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Placeholder'
+        '404':
+          description: Placeholder not found
+
+  /plugins/:
+    get:
+      operationId: plugin_list_retrieve
+      summary: Plugin definitions
+      description: >-
+        Returns definitions of all registered CMS plugin types, including their
+        property schemas for use in frontend code generation and type-safe clients.
+      tags:
+        - Plugins
+      responses:
+        '200':
+          description: List of plugin type definitions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PluginDefinition'
+
+  /{language}/menu/:
+    get:
+      operationId: menu_retrieve
+      summary: Menu (root)
+      description: Returns the root-level navigation menu structure for the given language.
+      tags:
+        - Menus
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+        '404':
+          description: Language not found or page not found
+
+  /{language}/menu/{from_level}/{to_level}/{extra_inactive}/{extra_active}/:
+    get:
+      operationId: menu_levels_retrieve
+      summary: Menu with level controls
+      description: Returns the navigation menu with explicit level and active-node controls.
+      tags:
+        - Menus
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/from_level'
+        - $ref: '#/components/parameters/to_level'
+        - $ref: '#/components/parameters/extra_inactive'
+        - $ref: '#/components/parameters/extra_active'
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+
+  /{language}/menu/{from_level}/{to_level}/{extra_inactive}/{extra_active}/{path}/:
+    get:
+      operationId: menu_levels_path_retrieve
+      summary: Menu with level controls and page path
+      description: Returns the navigation menu for a specific page path with level controls.
+      tags:
+        - Menus
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/from_level'
+        - $ref: '#/components/parameters/to_level'
+        - $ref: '#/components/parameters/extra_inactive'
+        - $ref: '#/components/parameters/extra_active'
+        - name: path
+          in: path
+          required: true
+          description: URL path of the current page for selected/active state
+          schema:
+            type: string
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+
+  /{language}/menu/{root_id}/{from_level}/{to_level}/{extra_inactive}/{extra_active}/:
+    get:
+      operationId: menu_root_levels_retrieve
+      summary: Menu from root node with level controls
+      description: Returns a sub-menu anchored at a specific root node (by reverse_id).
+      tags:
+        - Menus
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/root_id'
+        - $ref: '#/components/parameters/from_level'
+        - $ref: '#/components/parameters/to_level'
+        - $ref: '#/components/parameters/extra_inactive'
+        - $ref: '#/components/parameters/extra_active'
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+        '404':
+          description: Root node not found
+
+  /{language}/menu/{root_id}/{from_level}/{to_level}/{extra_inactive}/{extra_active}/{path}/:
+    get:
+      operationId: menu_root_levels_path_retrieve
+      summary: Menu from root node with level controls and page path
+      description: Returns a sub-menu anchored at a root node for a specific page path.
+      tags:
+        - Menus
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/root_id'
+        - $ref: '#/components/parameters/from_level'
+        - $ref: '#/components/parameters/to_level'
+        - $ref: '#/components/parameters/extra_inactive'
+        - $ref: '#/components/parameters/extra_active'
+        - name: path
+          in: path
+          required: true
+          description: URL path of the current page
+          schema:
+            type: string
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+
+  /{language}/submenu/{levels}/{root_level}/{nephews}/:
+    get:
+      operationId: submenu_levels_root_nephews_retrieve
+      summary: Submenu
+      description: Returns a submenu for the given language with level, root_level, and nephews controls.
+      tags:
+        - Menus
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/levels'
+        - $ref: '#/components/parameters/root_level'
+        - $ref: '#/components/parameters/nephews'
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Submenu navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+
+  /{language}/submenu/{levels}/{root_level}/{nephews}/{path}/:
+    get:
+      operationId: submenu_levels_root_nephews_path_retrieve
+      summary: Submenu with path
+      description: Returns a submenu for the given path with level, root_level, and nephews controls.
+      tags:
+        - Menus
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/levels'
+        - $ref: '#/components/parameters/root_level'
+        - $ref: '#/components/parameters/nephews'
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Submenu navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+
+  /{language}/submenu/{levels}/{root_level}/:
+    get:
+      operationId: submenu_levels_root_retrieve
+      summary: Submenu (levels + root_level)
+      description: Returns a submenu with levels and root_level controls.
+      tags:
+        - Menus
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/levels'
+        - $ref: '#/components/parameters/root_level'
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Submenu navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+
+  /{language}/submenu/{levels}/:
+    get:
+      operationId: submenu_levels_retrieve
+      summary: Submenu (levels only)
+      description: Returns a submenu limited to the given number of levels.
+      tags:
+        - Menus
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/levels'
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Submenu navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+
+  /{language}/submenu/:
+    get:
+      operationId: submenu_retrieve
+      summary: Submenu (default)
+      description: Returns the default submenu for the current context.
+      tags:
+        - Menus
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Submenu navigation tree
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+
+  /{language}/breadcrumbs/:
+    get:
+      operationId: breadcrumbs_retrieve
+      summary: Breadcrumbs (root)
+      description: Returns the breadcrumb trail from the root for the given language.
+      tags:
+        - Breadcrumbs
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Breadcrumb navigation nodes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+
+  /{language}/breadcrumbs/{path}/:
+    get:
+      operationId: breadcrumbs_path_retrieve
+      summary: Breadcrumbs by path
+      description: Returns the breadcrumb trail to the specified page path.
+      tags:
+        - Breadcrumbs
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - name: path
+          in: path
+          required: true
+          description: URL path of the target page
+          schema:
+            type: string
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Breadcrumb navigation nodes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+
+  /{language}/breadcrumbs/{start_level}/:
+    get:
+      operationId: breadcrumbs_level_retrieve
+      summary: Breadcrumbs from level
+      description: Returns the breadcrumb trail starting from the given level.
+      tags:
+        - Breadcrumbs
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/start_level'
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Breadcrumb navigation nodes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+
+  /{language}/breadcrumbs/{start_level}/{path}/:
+    get:
+      operationId: breadcrumbs_level_path_retrieve
+      summary: Breadcrumbs from level by path
+      description: Returns the breadcrumb trail from the given level for the specified page path.
+      tags:
+        - Breadcrumbs
+      parameters:
+        - $ref: '#/components/parameters/language'
+        - $ref: '#/components/parameters/start_level'
+        - name: path
+          in: path
+          required: true
+          description: URL path of the target page
+          schema:
+            type: string
+        - $ref: '#/components/parameters/preview'
+      responses:
+        '200':
+          description: Breadcrumb navigation nodes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NavigationNode'
+
+components:
+  parameters:
+    language:
+      name: language
+      in: path
+      required: true
+      description: Language code (e.g. "en", "de", "fr")
+      schema:
+        type: string
+        example: en
+    preview:
+      name: preview
+      in: query
+      description: >-
+        Set to 1 or true to include draft/unpublished content (requires appropriate permissions)
+      schema:
+        type: string
+        enum: ['0', '1', 'true', 'false']
+    html:
+      name: html
+      in: query
+      description: Set to 1 to include server-rendered HTML for placeholder content
+      schema:
+        type: string
+        enum: ['0', '1']
+    from_level:
+      name: from_level
+      in: path
+      required: true
+      description: Starting menu level (0 = root)
+      schema:
+        type: integer
+        default: 0
+    to_level:
+      name: to_level
+      in: path
+      required: true
+      description: Maximum menu level to include
+      schema:
+        type: integer
+        default: 100
+    extra_inactive:
+      name: extra_inactive
+      in: path
+      required: true
+      description: Extra levels to show for inactive branches
+      schema:
+        type: integer
+        default: 0
+    extra_active:
+      name: extra_active
+      in: path
+      required: true
+      description: Extra levels to show for active branches
+      schema:
+        type: integer
+        default: 1000
+    root_id:
+      name: root_id
+      in: path
+      required: true
+      description: The reverse_id of the root page node to anchor the menu
+      schema:
+        type: string
+    levels:
+      name: levels
+      in: path
+      required: true
+      description: Number of submenu levels to include
+      schema:
+        type: integer
+    root_level:
+      name: root_level
+      in: path
+      required: true
+      description: The root level for the submenu
+      schema:
+        type: integer
+    nephews:
+      name: nephews
+      in: path
+      required: true
+      description: Number of sibling levels to include in submenu
+      schema:
+        type: integer
+    start_level:
+      name: start_level
+      in: path
+      required: true
+      description: Starting breadcrumb level
+      schema:
+        type: integer
+        default: 0
+
+  schemas:
+    HealthCheck:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+          description: Service health status
+      required:
+        - status
+
+    Language:
+      type: object
+      description: A language configured for the current Django CMS site
+      properties:
+        code:
+          type: string
+          maxLength: 10
+          description: BCP 47 language code (e.g. "en", "de-ch")
+          example: en
+        name:
+          type: string
+          maxLength: 100
+          description: Human-readable language name
+          example: English
+        public:
+          type: boolean
+          description: Whether the language is publicly accessible
+        fallbacks:
+          type: array
+          items:
+            type: string
+            maxLength: 10
+          description: Ordered list of fallback language codes
+          example: ['de', 'fr']
+        redirect_on_fallback:
+          type: boolean
+          description: Whether to redirect when serving fallback language content
+        hide_untranslated:
+          type: boolean
+          description: Whether to hide pages that are not translated in this language
+      required:
+        - code
+        - name
+        - public
+        - fallbacks
+        - redirect_on_fallback
+        - hide_untranslated
+
+    PageBase:
+      type: object
+      description: Core fields shared by all page representations
+      properties:
+        title:
+          type: string
+          maxLength: 255
+          description: Page title
+        page_title:
+          type: string
+          maxLength: 255
+          description: Page title used in <title> tag (falls back to title)
+        menu_title:
+          type: string
+          maxLength: 255
+          description: Title displayed in navigation menus (falls back to title)
+        meta_description:
+          type: string
+          description: SEO meta description
+        redirect:
+          type: string
+          maxLength: 2048
+          nullable: true
+          description: Redirect URL if configured
+        absolute_url:
+          type: string
+          format: uri
+          description: Absolute frontend URL for the page
+        path:
+          type: string
+          maxLength: 200
+          description: Relative URL path of the page
+        details:
+          type: string
+          maxLength: 2048
+          description: API endpoint URL for this page
+        is_home:
+          type: boolean
+          description: Whether this is the home/root page
+        login_required:
+          type: boolean
+          description: Whether the page requires authentication to view
+        in_navigation:
+          type: boolean
+          description: Whether the page appears in navigation menus
+        soft_root:
+          type: boolean
+          description: Whether the page is a soft root for navigation
+        template:
+          type: string
+          maxLength: 100
+          description: Template file used to render this page
+        xframe_options:
+          type: string
+          maxLength: 50
+          description: X-Frame-Options header value
+        limit_visibility_in_menu:
+          type: boolean
+          nullable: true
+          default: false
+          description: Whether menu visibility is restricted
+        language:
+          type: string
+          maxLength: 10
+          description: Language code of this page content
+          example: en
+        languages:
+          type: array
+          items:
+            type: string
+          description: All languages this page is available in
+        is_preview:
+          type: boolean
+          default: false
+          description: Whether this response is in preview/draft mode
+        application_namespace:
+          type: string
+          maxLength: 200
+          nullable: true
+          description: Application namespace if the page is an apphook
+        creation_date:
+          type: string
+          format: date-time
+          description: When the page was created
+        changed_date:
+          type: string
+          format: date-time
+          description: When the page was last modified
+
+    PageList:
+      allOf:
+        - $ref: '#/components/schemas/PageBase'
+      description: Flat page representation used in list and search results
+
+    PageMeta:
+      allOf:
+        - $ref: '#/components/schemas/PageBase'
+      description: Page with nested children for tree representation
+      properties:
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/PageMeta'
+          default: []
+          description: Child pages in the tree
+
+    PageContent:
+      allOf:
+        - $ref: '#/components/schemas/PageBase'
+      description: Full page detail including placeholder content
+      properties:
+        placeholders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Placeholder'
+          description: Ordered list of placeholders defined by the page template
+
+    PaginatedPageList:
+      type: object
+      description: Paginated list of pages
+      properties:
+        count:
+          type: integer
+          description: Total number of pages
+        next:
+          type: string
+          format: uri
+          nullable: true
+          description: URL to next page of results
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          description: URL to previous page of results
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/PageList'
+
+    Placeholder:
+      type: object
+      description: A placeholder containing structured plugin content
+      properties:
+        slot:
+          type: string
+          description: Template slot name for this placeholder
+        label:
+          type: string
+          description: Human-readable label for the placeholder
+        language:
+          type: string
+          description: Language code of the content
+        content:
+          type: array
+          items:
+            type: object
+          description: >-
+            Nested list of serialized plugin data objects. Each object has a
+            "plugin_type" field identifying its type, plus plugin-specific properties.
+        details:
+          type: string
+          format: uri
+          description: API URL to retrieve this placeholder directly
+        html:
+          type: string
+          default: ''
+          description: Server-rendered HTML output (only present when ?html=1 is requested)
+      required:
+        - slot
+        - label
+        - language
+        - details
+
+    PluginDefinition:
+      type: object
+      description: Schema definition for a registered CMS plugin type
+      properties:
+        plugin_type:
+          type: string
+          description: Unique identifier for the plugin type (e.g. "TextPlugin")
+        title:
+          type: string
+          description: Human-readable plugin name
+        type:
+          type: string
+          description: JSON Schema type (typically "object")
+          example: object
+        properties:
+          type: object
+          description: >-
+            JSON Schema property definitions for the plugin's fields.
+            Each key is a field name; the value is a JSON Schema descriptor.
+          additionalProperties:
+            type: object
+      required:
+        - plugin_type
+        - title
+        - type
+        - properties
+
+    NavigationNode:
+      type: object
+      description: A navigation menu node, optionally with nested children
+      properties:
+        namespace:
+          type: string
+          nullable: true
+          description: Menu namespace (for apphook menus)
+        title:
+          type: string
+          description: Display title for the menu item
+        url:
+          type: string
+          format: uri
+          nullable: true
+          description: Absolute frontend URL for the menu item
+        api_endpoint:
+          type: string
+          format: uri
+          nullable: true
+          description: API URL to fetch full page detail for this menu item
+        visible:
+          type: boolean
+          description: Whether this node is visible in the menu
+        selected:
+          type: boolean
+          description: Whether this node represents the current page
+        attr:
+          type: object
+          nullable: true
+          description: Additional attributes from the menu template tag (e.g. is_home, auth_required)
+          additionalProperties: true
+        level:
+          type: integer
+          nullable: true
+          description: Nesting level of this menu node (0 = root)
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/NavigationNode'
+          description: Child navigation nodes
+      required:
+        - title
+        - visible
+        - selected

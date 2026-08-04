@@ -1,0 +1,26 @@
+{
+  "provider": "django-cms",
+  "sources": [
+    "django-cms-breadcrumbs-api-openapi.yml",
+    "django-cms-health-api-openapi.yml",
+    "django-cms-languages-api-openapi.yml",
+    "django-cms-menus-api-openapi.yml",
+    "django-cms-pages-api-openapi.yml",
+    "django-cms-placeholders-api-openapi.yml",
+    "django-cms-plugins-api-openapi.yml"
+  ],
+  "outputs": [
+    "django-cms-breadcrumbs-api-openapi.yml",
+    "django-cms-health-api-openapi.yml",
+    "django-cms-languages-api-openapi.yml",
+    "django-cms-menus-api-openapi.yml",
+    "django-cms-pages-api-openapi.yml",
+    "django-cms-placeholders-api-openapi.yml",
+    "django-cms-plugins-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
