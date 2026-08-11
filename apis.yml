@@ -185,6 +185,13 @@ apis:
   - type: PyPI
     url: https://pypi.org/project/djangocms-rest/
 common:
+  - type: IssueTracker
+    url: https://github.com/django-cms/djangocms-rest/issues
+  - type: Releases
+    url: https://github.com/django-cms/djangocms-rest/releases
+  - type: License
+    name: BSD-3-Clause
+    url: https://github.com/django-cms/djangocms-rest/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/django-cms-agentic-access.yml
   - type: DomainSecurity
