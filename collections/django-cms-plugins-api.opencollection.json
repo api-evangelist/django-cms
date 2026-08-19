@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "djangocms-rest Breadcrumbs Plugins API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plugins",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Plugin definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/plugins/"
+          },
+          "docs": "Returns definitions of all registered CMS plugin types, including their property schemas for use in frontend code generation and type-safe clients."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

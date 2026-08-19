@@ -1,0 +1,104 @@
+{
+  "item": [
+    {
+      "id": "327be0b2-1845-440e-bb22-3b0150dda54b",
+      "name": "Plugins",
+      "description": {
+        "content": "Plugin type definitions and schema",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ce84d55a-1b4f-4edf-ac8a-67d0707af6c2",
+          "name": "Plugin definitions",
+          "request": {
+            "name": "Plugin definitions",
+            "description": {
+              "content": "Returns definitions of all registered CMS plugin types, including their property schemas for use in frontend code generation and type-safe clients.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "plugins",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe0a38ce-f082-46f0-9ce3-17f9194c80e4",
+              "name": "List of plugin type definitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "plugins",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"plugin_type\": \"string\",\n    \"title\": \"string\",\n    \"type\": \"object\",\n    \"properties\": {\n      \"key_0\": {}\n    }\n  },\n  {\n    \"plugin_type\": \"string\",\n    \"title\": \"string\",\n    \"type\": \"object\",\n    \"properties\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://example.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d2222d40-c534-4fc9-8ac1-f4c7a7c592fd",
+    "name": "djangocms-rest Breadcrumbs Plugins API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.\n\nContact Support:\n Name: Django CMS Association\n Email: info@django-cms.org",
+      "type": "text/plain"
+    }
+  }
+}

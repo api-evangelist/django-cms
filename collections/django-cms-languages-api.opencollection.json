@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "djangocms-rest Breadcrumbs Languages API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Languages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List available languages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/languages/"
+          },
+          "docs": "Returns all languages configured for the current site."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

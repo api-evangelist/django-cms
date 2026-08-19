@@ -1,0 +1,447 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "djangocms-rest Breadcrumbs Menus API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Menus",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Menu (root)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/menu/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns the root-level navigation menu structure for the given language."
+        },
+        {
+          "info": {
+            "name": "Menu with level controls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/menu/:from_level/:to_level/:extra_inactive/:extra_active/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "from_level",
+                "value": "",
+                "type": "path",
+                "description": "Starting menu level (0 = root)"
+              },
+              {
+                "name": "to_level",
+                "value": "",
+                "type": "path",
+                "description": "Maximum menu level to include"
+              },
+              {
+                "name": "extra_inactive",
+                "value": "",
+                "type": "path",
+                "description": "Extra levels to show for inactive branches"
+              },
+              {
+                "name": "extra_active",
+                "value": "",
+                "type": "path",
+                "description": "Extra levels to show for active branches"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns the navigation menu with explicit level and active-node controls."
+        },
+        {
+          "info": {
+            "name": "Menu with level controls and page path",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/menu/:from_level/:to_level/:extra_inactive/:extra_active/:path/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "from_level",
+                "value": "",
+                "type": "path",
+                "description": "Starting menu level (0 = root)"
+              },
+              {
+                "name": "to_level",
+                "value": "",
+                "type": "path",
+                "description": "Maximum menu level to include"
+              },
+              {
+                "name": "extra_inactive",
+                "value": "",
+                "type": "path",
+                "description": "Extra levels to show for inactive branches"
+              },
+              {
+                "name": "extra_active",
+                "value": "",
+                "type": "path",
+                "description": "Extra levels to show for active branches"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path",
+                "description": "URL path of the current page for selected/active state"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns the navigation menu for a specific page path with level controls."
+        },
+        {
+          "info": {
+            "name": "Menu from root node with level controls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/menu/:root_id/:from_level/:to_level/:extra_inactive/:extra_active/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "root_id",
+                "value": "",
+                "type": "path",
+                "description": "The reverse_id of the root page node to anchor the menu"
+              },
+              {
+                "name": "from_level",
+                "value": "",
+                "type": "path",
+                "description": "Starting menu level (0 = root)"
+              },
+              {
+                "name": "to_level",
+                "value": "",
+                "type": "path",
+                "description": "Maximum menu level to include"
+              },
+              {
+                "name": "extra_inactive",
+                "value": "",
+                "type": "path",
+                "description": "Extra levels to show for inactive branches"
+              },
+              {
+                "name": "extra_active",
+                "value": "",
+                "type": "path",
+                "description": "Extra levels to show for active branches"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns a sub-menu anchored at a specific root node (by reverse_id)."
+        },
+        {
+          "info": {
+            "name": "Menu from root node with level controls and page path",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/menu/:root_id/:from_level/:to_level/:extra_inactive/:extra_active/:path/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "root_id",
+                "value": "",
+                "type": "path",
+                "description": "The reverse_id of the root page node to anchor the menu"
+              },
+              {
+                "name": "from_level",
+                "value": "",
+                "type": "path",
+                "description": "Starting menu level (0 = root)"
+              },
+              {
+                "name": "to_level",
+                "value": "",
+                "type": "path",
+                "description": "Maximum menu level to include"
+              },
+              {
+                "name": "extra_inactive",
+                "value": "",
+                "type": "path",
+                "description": "Extra levels to show for inactive branches"
+              },
+              {
+                "name": "extra_active",
+                "value": "",
+                "type": "path",
+                "description": "Extra levels to show for active branches"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path",
+                "description": "URL path of the current page"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns a sub-menu anchored at a root node for a specific page path."
+        },
+        {
+          "info": {
+            "name": "Submenu",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/submenu/:levels/:root_level/:nephews/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "levels",
+                "value": "",
+                "type": "path",
+                "description": "Number of submenu levels to include"
+              },
+              {
+                "name": "root_level",
+                "value": "",
+                "type": "path",
+                "description": "The root level for the submenu"
+              },
+              {
+                "name": "nephews",
+                "value": "",
+                "type": "path",
+                "description": "Number of sibling levels to include in submenu"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns a submenu for the given language with level, root_level, and nephews controls."
+        },
+        {
+          "info": {
+            "name": "Submenu with path",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/submenu/:levels/:root_level/:nephews/:path/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "levels",
+                "value": "",
+                "type": "path",
+                "description": "Number of submenu levels to include"
+              },
+              {
+                "name": "root_level",
+                "value": "",
+                "type": "path",
+                "description": "The root level for the submenu"
+              },
+              {
+                "name": "nephews",
+                "value": "",
+                "type": "path",
+                "description": "Number of sibling levels to include in submenu"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns a submenu for the given path with level, root_level, and nephews controls."
+        },
+        {
+          "info": {
+            "name": "Submenu (levels + root_level)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/submenu/:levels/:root_level/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "levels",
+                "value": "",
+                "type": "path",
+                "description": "Number of submenu levels to include"
+              },
+              {
+                "name": "root_level",
+                "value": "",
+                "type": "path",
+                "description": "The root level for the submenu"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns a submenu with levels and root_level controls."
+        },
+        {
+          "info": {
+            "name": "Submenu (levels only)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/submenu/:levels/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "levels",
+                "value": "",
+                "type": "path",
+                "description": "Number of submenu levels to include"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns a submenu limited to the given number of levels."
+        },
+        {
+          "info": {
+            "name": "Submenu (default)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/submenu/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns the default submenu for the current context."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

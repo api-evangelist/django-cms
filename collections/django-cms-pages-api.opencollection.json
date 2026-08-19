@@ -1,0 +1,179 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "djangocms-rest Breadcrumbs Pages API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Page tree",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/pages-tree/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns all pages for the given language as a nested tree structure."
+        },
+        {
+          "info": {
+            "name": "Flat page list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/pages-list/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results"
+              }
+            ]
+          },
+          "docs": "Returns a paginated flat list of all pages for the given language."
+        },
+        {
+          "info": {
+            "name": "Root page detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/pages/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              },
+              {
+                "name": "html",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to include server-rendered HTML for placeholder content"
+              }
+            ]
+          },
+          "docs": "Retrieve the root (home) page for the given language, including its placeholders."
+        },
+        {
+          "info": {
+            "name": "Page detail by path",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/pages/:path/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path",
+                "description": "URL path of the page (e.g. \"blog/my-post\")"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              },
+              {
+                "name": "html",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to include server-rendered HTML for placeholder content"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific page by its URL path for the given language, including its placeholders."
+        },
+        {
+          "info": {
+            "name": "Search pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/page_search/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query string"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Search pages by a query string for the given language."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

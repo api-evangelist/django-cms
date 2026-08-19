@@ -1,0 +1,264 @@
+{
+  "item": [
+    {
+      "id": "08e8a595-5890-47c8-97ec-d62c2e8a1a1e",
+      "name": "Placeholders",
+      "description": {
+        "content": "Placeholder content with nested plugin data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "678ed2cd-7c78-496e-94a6-52dd721174de",
+          "name": "Placeholder detail",
+          "request": {
+            "name": "Placeholder detail",
+            "description": {
+              "content": "Retrieve the content of a placeholder by content type, object ID, and slot name. The response includes the nested plugin data as structured JSON. Add ?html=1 to also receive server-rendered HTML output.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "placeholders",
+                ":content_type_id",
+                ":object_id",
+                ":slot",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                },
+                {
+                  "disabled": false,
+                  "key": "html",
+                  "value": "<string>",
+                  "description": "Set to 1 to include server-rendered HTML for placeholder content"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "content_type_id",
+                  "description": "(Required) Django content type ID for the placeholder's owner model"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "object_id",
+                  "description": "(Required) Primary key of the placeholder's owner object"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slot",
+                  "description": "(Required) Slot name of the placeholder"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b97db0d-c5ff-4f58-a0da-556c76ad7e71",
+              "name": "Placeholder content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "placeholders",
+                    ":content_type_id",
+                    ":object_id",
+                    ":slot",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "html",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "content_type_id",
+                      "description": "(Required) Django content type ID for the placeholder's owner model"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "object_id",
+                      "description": "(Required) Primary key of the placeholder's owner object"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slot",
+                      "description": "(Required) Slot name of the placeholder"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"slot\": \"string\",\n  \"label\": \"string\",\n  \"language\": \"string\",\n  \"details\": \"https://pRoutsBfhAorgVhYQyekPTUAMytCA.nsjNF,Y6a9xETg,c6NASizx3pwJMwQT.GJT1+unKp\",\n  \"html\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "576677fb-4a8c-4601-a351-5183212655af",
+              "name": "Placeholder not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "placeholders",
+                    ":content_type_id",
+                    ":object_id",
+                    ":slot",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "html",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "content_type_id",
+                      "description": "(Required) Django content type ID for the placeholder's owner model"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "object_id",
+                      "description": "(Required) Primary key of the placeholder's owner object"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slot",
+                      "description": "(Required) Slot name of the placeholder"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://example.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dfa9b9c7-dc7f-4030-8e99-8e3aef88343c",
+    "name": "djangocms-rest Breadcrumbs Placeholders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.\n\nContact Support:\n Name: Django CMS Association\n Email: info@django-cms.org",
+      "type": "text/plain"
+    }
+  }
+}

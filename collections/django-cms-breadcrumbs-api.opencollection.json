@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "djangocms-rest Breadcrumbs API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Breadcrumbs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Breadcrumbs (root)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/breadcrumbs/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns the breadcrumb trail from the root for the given language."
+        },
+        {
+          "info": {
+            "name": "Breadcrumbs by path",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/breadcrumbs/:path/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path",
+                "description": "URL path of the target page"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns the breadcrumb trail to the specified page path."
+        },
+        {
+          "info": {
+            "name": "Breadcrumbs from level",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/breadcrumbs/:start_level/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "start_level",
+                "value": "",
+                "type": "path",
+                "description": "Starting breadcrumb level"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns the breadcrumb trail starting from the given level."
+        },
+        {
+          "info": {
+            "name": "Breadcrumbs from level by path",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/breadcrumbs/:start_level/:path/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "start_level",
+                "value": "",
+                "type": "path",
+                "description": "Starting breadcrumb level"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path",
+                "description": "URL path of the target page"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              }
+            ]
+          },
+          "docs": "Returns the breadcrumb trail from the given level for the specified page path."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

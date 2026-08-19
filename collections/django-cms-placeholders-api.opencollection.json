@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "djangocms-rest Breadcrumbs Placeholders API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Placeholders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Placeholder detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/api/:language/placeholders/:content_type_id/:object_id/:slot/",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "path",
+                "description": "Language code (e.g. \"en\", \"de\", \"fr\")"
+              },
+              {
+                "name": "content_type_id",
+                "value": "",
+                "type": "path",
+                "description": "Django content type ID for the placeholder's owner model"
+              },
+              {
+                "name": "object_id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the placeholder's owner object"
+              },
+              {
+                "name": "slot",
+                "value": "",
+                "type": "path",
+                "description": "Slot name of the placeholder"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+              },
+              {
+                "name": "html",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to include server-rendered HTML for placeholder content"
+              }
+            ]
+          },
+          "docs": "Retrieve the content of a placeholder by content type, object ID, and slot name. The response includes the nested plugin data as structured JSON. Add ?html=1 to also receive server-rendered HTML output."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

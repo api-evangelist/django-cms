@@ -1,0 +1,104 @@
+{
+  "item": [
+    {
+      "id": "02618ba3-780d-4467-a07e-947a7339e47b",
+      "name": "Health",
+      "description": {
+        "content": "Health check endpoint for monitoring",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5581fda3-92e3-48e4-85d0-f25f2fcd4f34",
+          "name": "Health check",
+          "request": {
+            "name": "Health check",
+            "description": {
+              "content": "Minimal health check endpoint for monitoring tools.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "healthcheck",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf5b3f65-c205-47f7-856c-e9a86efb4694",
+              "name": "Service is healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "healthcheck",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://example.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6ee02b07-484e-4b95-a804-18f6f85dbf17",
+    "name": "djangocms-rest Breadcrumbs Health API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.\n\nContact Support:\n Name: Django CMS Association\n Email: info@django-cms.org",
+      "type": "text/plain"
+    }
+  }
+}

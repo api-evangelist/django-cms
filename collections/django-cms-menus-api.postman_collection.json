@@ -1,0 +1,1660 @@
+{
+  "item": [
+    {
+      "id": "a83876b0-cb63-4569-bd6d-e3bff8eff384",
+      "name": "Menus",
+      "description": {
+        "content": "Navigation menu structures",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "489845af-053f-4bf0-ae1c-e064b44b30ff",
+          "name": "Menu (root)",
+          "request": {
+            "name": "Menu (root)",
+            "description": {
+              "content": "Returns the root-level navigation menu structure for the given language.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "menu",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "179c7f83-ce75-4320-82a8-4ec274400c34",
+              "name": "Navigation tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "menu",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": false,\n    \"namespace\": \"string\",\n    \"url\": \"https://Mv.uviHeaglszRPL-IkJp-ARMj,XMsp\",\n    \"api_endpoint\": \"http://hS.pimtetoIR,bG3RGCZIPD7oJdUsgQmZPY\",\n    \"attr\": {\n      \"key_0\": 692.2137788714977\n    },\n    \"level\": 180,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  },\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": false,\n    \"namespace\": \"string\",\n    \"url\": \"http://AzfGcgbYXNwO.pyIIL\",\n    \"api_endpoint\": \"http://jpcYkcbWXWAsKcsjjbmYJP.gngzmVyJw+.dLL0FQgBdTMeTffgXh+SOxxxS,b2wVD\",\n    \"attr\": {\n      \"key_0\": 9961,\n      \"key_1\": 5954\n    },\n    \"level\": 3425,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b807193f-97da-4cfa-848e-c336c3d6217a",
+              "name": "Language not found or page not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "menu",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "455b61cd-7320-4c3f-acdf-a3a6dd04b06e",
+          "name": "Menu with level controls",
+          "request": {
+            "name": "Menu with level controls",
+            "description": {
+              "content": "Returns the navigation menu with explicit level and active-node controls.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "menu",
+                ":from_level",
+                ":to_level",
+                ":extra_inactive",
+                ":extra_active",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "0",
+                  "key": "from_level",
+                  "description": "(Required) Starting menu level (0 = root)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "100",
+                  "key": "to_level",
+                  "description": "(Required) Maximum menu level to include"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "0",
+                  "key": "extra_inactive",
+                  "description": "(Required) Extra levels to show for inactive branches"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "1000",
+                  "key": "extra_active",
+                  "description": "(Required) Extra levels to show for active branches"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e9f03980-2b08-4d49-9d90-08db12bfe123",
+              "name": "Navigation tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "menu",
+                    ":from_level",
+                    ":to_level",
+                    ":extra_inactive",
+                    ":extra_active",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "0",
+                      "key": "from_level",
+                      "description": "(Required) Starting menu level (0 = root)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "100",
+                      "key": "to_level",
+                      "description": "(Required) Maximum menu level to include"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "0",
+                      "key": "extra_inactive",
+                      "description": "(Required) Extra levels to show for inactive branches"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "1000",
+                      "key": "extra_active",
+                      "description": "(Required) Extra levels to show for active branches"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"visible\": true,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"http://AMFaeB.gwqgUXZZNWHMvU1htDfjtbM7.GjoRMZ,VDBvr,70WAxly.rdMuu\",\n    \"api_endpoint\": \"http://yE.crwkyXECxGUAoJDQ4br0uO\",\n    \"attr\": {\n      \"key_0\": \"string\"\n    },\n    \"level\": 4589,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  },\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"https://HlSQTHpyzuKuceCSrVAGupCTEU.bvjJedrzt,fWfcXnSFhwFNW5ZI8IkGVTTn5\",\n    \"api_endpoint\": \"http://gBqNBIBKcZavJcy.strwPSHLxprjH,haMozH\",\n    \"attr\": {\n      \"key_0\": 3764,\n      \"key_1\": \"string\"\n    },\n    \"level\": 3028,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bfa63fe-410e-4a0c-95ee-6d7f5f75d306",
+          "name": "Menu with level controls and page path",
+          "request": {
+            "name": "Menu with level controls and page path",
+            "description": {
+              "content": "Returns the navigation menu for a specific page path with level controls.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "menu",
+                ":from_level",
+                ":to_level",
+                ":extra_inactive",
+                ":extra_active",
+                ":path",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "0",
+                  "key": "from_level",
+                  "description": "(Required) Starting menu level (0 = root)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "100",
+                  "key": "to_level",
+                  "description": "(Required) Maximum menu level to include"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "0",
+                  "key": "extra_inactive",
+                  "description": "(Required) Extra levels to show for inactive branches"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "1000",
+                  "key": "extra_active",
+                  "description": "(Required) Extra levels to show for active branches"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "path",
+                  "description": "(Required) URL path of the current page for selected/active state"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b2a22e9-fad3-4595-ac93-effbaae55160",
+              "name": "Navigation tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "menu",
+                    ":from_level",
+                    ":to_level",
+                    ":extra_inactive",
+                    ":extra_active",
+                    ":path",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "0",
+                      "key": "from_level",
+                      "description": "(Required) Starting menu level (0 = root)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "100",
+                      "key": "to_level",
+                      "description": "(Required) Maximum menu level to include"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "0",
+                      "key": "extra_inactive",
+                      "description": "(Required) Extra levels to show for inactive branches"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "1000",
+                      "key": "extra_active",
+                      "description": "(Required) Extra levels to show for active branches"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) URL path of the current page for selected/active state"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"visible\": true,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"http://AMFaeB.gwqgUXZZNWHMvU1htDfjtbM7.GjoRMZ,VDBvr,70WAxly.rdMuu\",\n    \"api_endpoint\": \"http://yE.crwkyXECxGUAoJDQ4br0uO\",\n    \"attr\": {\n      \"key_0\": \"string\"\n    },\n    \"level\": 4589,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  },\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"https://HlSQTHpyzuKuceCSrVAGupCTEU.bvjJedrzt,fWfcXnSFhwFNW5ZI8IkGVTTn5\",\n    \"api_endpoint\": \"http://gBqNBIBKcZavJcy.strwPSHLxprjH,haMozH\",\n    \"attr\": {\n      \"key_0\": 3764,\n      \"key_1\": \"string\"\n    },\n    \"level\": 3028,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54d88a38-7e49-4e2b-916b-20ccc61db5a2",
+          "name": "Menu from root node with level controls",
+          "request": {
+            "name": "Menu from root node with level controls",
+            "description": {
+              "content": "Returns a sub-menu anchored at a specific root node (by reverse_id).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "menu",
+                ":root_id",
+                ":from_level",
+                ":to_level",
+                ":extra_inactive",
+                ":extra_active",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "root_id",
+                  "description": "(Required) The reverse_id of the root page node to anchor the menu"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "0",
+                  "key": "from_level",
+                  "description": "(Required) Starting menu level (0 = root)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "100",
+                  "key": "to_level",
+                  "description": "(Required) Maximum menu level to include"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "0",
+                  "key": "extra_inactive",
+                  "description": "(Required) Extra levels to show for inactive branches"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "1000",
+                  "key": "extra_active",
+                  "description": "(Required) Extra levels to show for active branches"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9c68920-960b-4ed9-b31e-3025ffc5fca7",
+              "name": "Navigation tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "menu",
+                    ":root_id",
+                    ":from_level",
+                    ":to_level",
+                    ":extra_inactive",
+                    ":extra_active",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "root_id",
+                      "description": "(Required) The reverse_id of the root page node to anchor the menu"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "0",
+                      "key": "from_level",
+                      "description": "(Required) Starting menu level (0 = root)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "100",
+                      "key": "to_level",
+                      "description": "(Required) Maximum menu level to include"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "0",
+                      "key": "extra_inactive",
+                      "description": "(Required) Extra levels to show for inactive branches"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "1000",
+                      "key": "extra_active",
+                      "description": "(Required) Extra levels to show for active branches"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"visible\": true,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"http://AMFaeB.gwqgUXZZNWHMvU1htDfjtbM7.GjoRMZ,VDBvr,70WAxly.rdMuu\",\n    \"api_endpoint\": \"http://yE.crwkyXECxGUAoJDQ4br0uO\",\n    \"attr\": {\n      \"key_0\": \"string\"\n    },\n    \"level\": 4589,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  },\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"https://HlSQTHpyzuKuceCSrVAGupCTEU.bvjJedrzt,fWfcXnSFhwFNW5ZI8IkGVTTn5\",\n    \"api_endpoint\": \"http://gBqNBIBKcZavJcy.strwPSHLxprjH,haMozH\",\n    \"attr\": {\n      \"key_0\": 3764,\n      \"key_1\": \"string\"\n    },\n    \"level\": 3028,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2273cfe6-494d-4315-9d06-da946b98206d",
+              "name": "Root node not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "menu",
+                    ":root_id",
+                    ":from_level",
+                    ":to_level",
+                    ":extra_inactive",
+                    ":extra_active",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "root_id",
+                      "description": "(Required) The reverse_id of the root page node to anchor the menu"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "0",
+                      "key": "from_level",
+                      "description": "(Required) Starting menu level (0 = root)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "100",
+                      "key": "to_level",
+                      "description": "(Required) Maximum menu level to include"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "0",
+                      "key": "extra_inactive",
+                      "description": "(Required) Extra levels to show for inactive branches"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "1000",
+                      "key": "extra_active",
+                      "description": "(Required) Extra levels to show for active branches"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f965e77-ab56-4b7e-8115-892d6a7c58f3",
+          "name": "Menu from root node with level controls and page path",
+          "request": {
+            "name": "Menu from root node with level controls and page path",
+            "description": {
+              "content": "Returns a sub-menu anchored at a root node for a specific page path.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "menu",
+                ":root_id",
+                ":from_level",
+                ":to_level",
+                ":extra_inactive",
+                ":extra_active",
+                ":path",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "root_id",
+                  "description": "(Required) The reverse_id of the root page node to anchor the menu"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "0",
+                  "key": "from_level",
+                  "description": "(Required) Starting menu level (0 = root)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "100",
+                  "key": "to_level",
+                  "description": "(Required) Maximum menu level to include"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "0",
+                  "key": "extra_inactive",
+                  "description": "(Required) Extra levels to show for inactive branches"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "1000",
+                  "key": "extra_active",
+                  "description": "(Required) Extra levels to show for active branches"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "path",
+                  "description": "(Required) URL path of the current page"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94d03e44-094a-4ed0-99af-d5aa6d0aa4b9",
+              "name": "Navigation tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "menu",
+                    ":root_id",
+                    ":from_level",
+                    ":to_level",
+                    ":extra_inactive",
+                    ":extra_active",
+                    ":path",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "root_id",
+                      "description": "(Required) The reverse_id of the root page node to anchor the menu"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "0",
+                      "key": "from_level",
+                      "description": "(Required) Starting menu level (0 = root)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "100",
+                      "key": "to_level",
+                      "description": "(Required) Maximum menu level to include"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "0",
+                      "key": "extra_inactive",
+                      "description": "(Required) Extra levels to show for inactive branches"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "1000",
+                      "key": "extra_active",
+                      "description": "(Required) Extra levels to show for active branches"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) URL path of the current page"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"visible\": true,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"http://AMFaeB.gwqgUXZZNWHMvU1htDfjtbM7.GjoRMZ,VDBvr,70WAxly.rdMuu\",\n    \"api_endpoint\": \"http://yE.crwkyXECxGUAoJDQ4br0uO\",\n    \"attr\": {\n      \"key_0\": \"string\"\n    },\n    \"level\": 4589,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  },\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"https://HlSQTHpyzuKuceCSrVAGupCTEU.bvjJedrzt,fWfcXnSFhwFNW5ZI8IkGVTTn5\",\n    \"api_endpoint\": \"http://gBqNBIBKcZavJcy.strwPSHLxprjH,haMozH\",\n    \"attr\": {\n      \"key_0\": 3764,\n      \"key_1\": \"string\"\n    },\n    \"level\": 3028,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9587709b-2632-47c4-b32b-7ff2e0d1ae27",
+          "name": "Submenu",
+          "request": {
+            "name": "Submenu",
+            "description": {
+              "content": "Returns a submenu for the given language with level, root_level, and nephews controls.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "submenu",
+                ":levels",
+                ":root_level",
+                ":nephews",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "levels",
+                  "description": "(Required) Number of submenu levels to include"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "root_level",
+                  "description": "(Required) The root level for the submenu"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "nephews",
+                  "description": "(Required) Number of sibling levels to include in submenu"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "73d12470-2798-4c9d-a5b2-6f2c134e39c3",
+              "name": "Submenu navigation tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "submenu",
+                    ":levels",
+                    ":root_level",
+                    ":nephews",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "levels",
+                      "description": "(Required) Number of submenu levels to include"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "root_level",
+                      "description": "(Required) The root level for the submenu"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "nephews",
+                      "description": "(Required) Number of sibling levels to include in submenu"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"visible\": true,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"http://AMFaeB.gwqgUXZZNWHMvU1htDfjtbM7.GjoRMZ,VDBvr,70WAxly.rdMuu\",\n    \"api_endpoint\": \"http://yE.crwkyXECxGUAoJDQ4br0uO\",\n    \"attr\": {\n      \"key_0\": \"string\"\n    },\n    \"level\": 4589,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  },\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"https://HlSQTHpyzuKuceCSrVAGupCTEU.bvjJedrzt,fWfcXnSFhwFNW5ZI8IkGVTTn5\",\n    \"api_endpoint\": \"http://gBqNBIBKcZavJcy.strwPSHLxprjH,haMozH\",\n    \"attr\": {\n      \"key_0\": 3764,\n      \"key_1\": \"string\"\n    },\n    \"level\": 3028,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f34009e-878d-4870-91e7-f7cc8c94d0cd",
+          "name": "Submenu with path",
+          "request": {
+            "name": "Submenu with path",
+            "description": {
+              "content": "Returns a submenu for the given path with level, root_level, and nephews controls.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "submenu",
+                ":levels",
+                ":root_level",
+                ":nephews",
+                ":path",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "levels",
+                  "description": "(Required) Number of submenu levels to include"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "root_level",
+                  "description": "(Required) The root level for the submenu"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "nephews",
+                  "description": "(Required) Number of sibling levels to include in submenu"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "path",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d36180de-0842-448a-a034-d80779760b43",
+              "name": "Submenu navigation tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "submenu",
+                    ":levels",
+                    ":root_level",
+                    ":nephews",
+                    ":path",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "levels",
+                      "description": "(Required) Number of submenu levels to include"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "root_level",
+                      "description": "(Required) The root level for the submenu"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "nephews",
+                      "description": "(Required) Number of sibling levels to include in submenu"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"visible\": true,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"http://AMFaeB.gwqgUXZZNWHMvU1htDfjtbM7.GjoRMZ,VDBvr,70WAxly.rdMuu\",\n    \"api_endpoint\": \"http://yE.crwkyXECxGUAoJDQ4br0uO\",\n    \"attr\": {\n      \"key_0\": \"string\"\n    },\n    \"level\": 4589,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  },\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"https://HlSQTHpyzuKuceCSrVAGupCTEU.bvjJedrzt,fWfcXnSFhwFNW5ZI8IkGVTTn5\",\n    \"api_endpoint\": \"http://gBqNBIBKcZavJcy.strwPSHLxprjH,haMozH\",\n    \"attr\": {\n      \"key_0\": 3764,\n      \"key_1\": \"string\"\n    },\n    \"level\": 3028,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "acfb0623-f549-47dd-9f11-e4e633b2636d",
+          "name": "Submenu (levels + root_level)",
+          "request": {
+            "name": "Submenu (levels + root_level)",
+            "description": {
+              "content": "Returns a submenu with levels and root_level controls.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "submenu",
+                ":levels",
+                ":root_level",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "levels",
+                  "description": "(Required) Number of submenu levels to include"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "root_level",
+                  "description": "(Required) The root level for the submenu"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e69589d-fcde-4e95-8c2e-ecb026e9da4e",
+              "name": "Submenu navigation tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "submenu",
+                    ":levels",
+                    ":root_level",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "levels",
+                      "description": "(Required) Number of submenu levels to include"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "root_level",
+                      "description": "(Required) The root level for the submenu"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"visible\": true,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"http://AMFaeB.gwqgUXZZNWHMvU1htDfjtbM7.GjoRMZ,VDBvr,70WAxly.rdMuu\",\n    \"api_endpoint\": \"http://yE.crwkyXECxGUAoJDQ4br0uO\",\n    \"attr\": {\n      \"key_0\": \"string\"\n    },\n    \"level\": 4589,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  },\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"https://HlSQTHpyzuKuceCSrVAGupCTEU.bvjJedrzt,fWfcXnSFhwFNW5ZI8IkGVTTn5\",\n    \"api_endpoint\": \"http://gBqNBIBKcZavJcy.strwPSHLxprjH,haMozH\",\n    \"attr\": {\n      \"key_0\": 3764,\n      \"key_1\": \"string\"\n    },\n    \"level\": 3028,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8b3a731-8b14-4bdc-bd55-b87c9a56991d",
+          "name": "Submenu (levels only)",
+          "request": {
+            "name": "Submenu (levels only)",
+            "description": {
+              "content": "Returns a submenu limited to the given number of levels.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "submenu",
+                ":levels",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "levels",
+                  "description": "(Required) Number of submenu levels to include"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4764aace-e9ab-4ba7-8360-fe3f508bd3ce",
+              "name": "Submenu navigation tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "submenu",
+                    ":levels",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "levels",
+                      "description": "(Required) Number of submenu levels to include"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"visible\": true,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"http://AMFaeB.gwqgUXZZNWHMvU1htDfjtbM7.GjoRMZ,VDBvr,70WAxly.rdMuu\",\n    \"api_endpoint\": \"http://yE.crwkyXECxGUAoJDQ4br0uO\",\n    \"attr\": {\n      \"key_0\": \"string\"\n    },\n    \"level\": 4589,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  },\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"https://HlSQTHpyzuKuceCSrVAGupCTEU.bvjJedrzt,fWfcXnSFhwFNW5ZI8IkGVTTn5\",\n    \"api_endpoint\": \"http://gBqNBIBKcZavJcy.strwPSHLxprjH,haMozH\",\n    \"attr\": {\n      \"key_0\": 3764,\n      \"key_1\": \"string\"\n    },\n    \"level\": 3028,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2f73bd5-3aa7-419b-b47f-1a27cef25bed",
+          "name": "Submenu (default)",
+          "request": {
+            "name": "Submenu (default)",
+            "description": {
+              "content": "Returns the default submenu for the current context.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "submenu",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "59072b0e-a28e-4d3a-925d-378140ce2210",
+              "name": "Submenu navigation tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "submenu",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"visible\": true,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"http://AMFaeB.gwqgUXZZNWHMvU1htDfjtbM7.GjoRMZ,VDBvr,70WAxly.rdMuu\",\n    \"api_endpoint\": \"http://yE.crwkyXECxGUAoJDQ4br0uO\",\n    \"attr\": {\n      \"key_0\": \"string\"\n    },\n    \"level\": 4589,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  },\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"https://HlSQTHpyzuKuceCSrVAGupCTEU.bvjJedrzt,fWfcXnSFhwFNW5ZI8IkGVTTn5\",\n    \"api_endpoint\": \"http://gBqNBIBKcZavJcy.strwPSHLxprjH,haMozH\",\n    \"attr\": {\n      \"key_0\": 3764,\n      \"key_1\": \"string\"\n    },\n    \"level\": 3028,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://example.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a6d0a60a-c0dc-44e8-bf4f-8cfe2179e227",
+    "name": "djangocms-rest Breadcrumbs Menus API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.\n\nContact Support:\n Name: Django CMS Association\n Email: info@django-cms.org",
+      "type": "text/plain"
+    }
+  }
+}

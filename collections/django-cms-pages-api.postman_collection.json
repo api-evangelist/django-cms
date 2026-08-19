@@ -1,0 +1,856 @@
+{
+  "item": [
+    {
+      "id": "49bd6728-7ffb-441a-bcf0-ea1009c64295",
+      "name": "Pages",
+      "description": {
+        "content": "CMS page content and tree structure",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "106044f6-6f25-402e-99ab-244d534d012f",
+          "name": "Page tree",
+          "request": {
+            "name": "Page tree",
+            "description": {
+              "content": "Returns all pages for the given language as a nested tree structure.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "pages-tree",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bffce78d-a104-48c3-87ad-383d1054e489",
+              "name": "Nested page tree",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "pages-tree",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"page_title\": \"string\",\n    \"menu_title\": \"string\",\n    \"meta_description\": \"string\",\n    \"redirect\": \"string\",\n    \"absolute_url\": \"https://YeTjRGPfzjbEKCu.qtoPeZiSCzKHzqLKerA.IdOOSsB.c0Q\",\n    \"path\": \"string\",\n    \"details\": \"string\",\n    \"is_home\": true,\n    \"login_required\": true,\n    \"in_navigation\": false,\n    \"soft_root\": false,\n    \"template\": \"string\",\n    \"xframe_options\": \"string\",\n    \"limit_visibility_in_menu\": false,\n    \"language\": \"en\",\n    \"languages\": [\n      \"string\",\n      \"string\"\n    ],\n    \"is_preview\": false,\n    \"application_namespace\": \"string\",\n    \"creation_date\": \"1953-10-27T00:26:13.195Z\",\n    \"changed_date\": \"1959-05-21T22:47:13.126Z\"\n  },\n  {\n    \"title\": \"string\",\n    \"page_title\": \"string\",\n    \"menu_title\": \"string\",\n    \"meta_description\": \"string\",\n    \"redirect\": \"string\",\n    \"absolute_url\": \"http://unsmuAzoweEeLpRWbRLrz.jixjQgK2PnBkSOGchoxYearcuYjNe-6ZyUlRUV3wNTLeBn3Mc5Bs9lLSIvB8dZU\",\n    \"path\": \"string\",\n    \"details\": \"string\",\n    \"is_home\": false,\n    \"login_required\": false,\n    \"in_navigation\": false,\n    \"soft_root\": true,\n    \"template\": \"string\",\n    \"xframe_options\": \"string\",\n    \"limit_visibility_in_menu\": false,\n    \"language\": \"en\",\n    \"languages\": [\n      \"string\",\n      \"string\"\n    ],\n    \"is_preview\": false,\n    \"application_namespace\": \"string\",\n    \"creation_date\": \"2001-06-11T10:52:11.783Z\",\n    \"changed_date\": \"1981-09-07T22:47:44.380Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3251dcce-aa1d-4fdc-9e14-1c6df1b33596",
+              "name": "Language not found or no pages available",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "pages-tree",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5342e9bc-02c0-4a61-8585-0bd8e887e38d",
+          "name": "Flat page list",
+          "request": {
+            "name": "Flat page list",
+            "description": {
+              "content": "Returns a paginated flat list of all pages for the given language.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "pages-list",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e33dbb5d-9089-49ca-bc21-dd0b8c44cf8b",
+              "name": "Paginated page list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "pages-list",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 5320,\n  \"next\": \"http://ngdWPeDIKboR.hyjAzbKUTeC,qdVSlHr4\",\n  \"previous\": \"http://zwOPKydKlZ.qukbzxcxs4hUSMmIJC5T7ZdVJuqJA\",\n  \"results\": [\n    {\n      \"title\": \"string\",\n      \"page_title\": \"string\",\n      \"menu_title\": \"string\",\n      \"meta_description\": \"string\",\n      \"redirect\": \"string\",\n      \"absolute_url\": \"https://TDVBcYJMaJWUtCyskZRyZ.ukNN4yRYTkaag\",\n      \"path\": \"string\",\n      \"details\": \"string\",\n      \"is_home\": true,\n      \"login_required\": true,\n      \"in_navigation\": true,\n      \"soft_root\": false,\n      \"template\": \"string\",\n      \"xframe_options\": \"string\",\n      \"limit_visibility_in_menu\": false,\n      \"language\": \"en\",\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"is_preview\": false,\n      \"application_namespace\": \"string\",\n      \"creation_date\": \"1977-03-01T02:54:18.951Z\",\n      \"changed_date\": \"1985-04-19T21:10:13.394Z\"\n    },\n    {\n      \"title\": \"string\",\n      \"page_title\": \"string\",\n      \"menu_title\": \"string\",\n      \"meta_description\": \"string\",\n      \"redirect\": \"string\",\n      \"absolute_url\": \"http://dMQkBhYXCIWowYTuJpoiI.dpwkNn4Vx+K6-0ADqQT277jfMdI7IITOz,dPLUCo,aB4+FrN\",\n      \"path\": \"string\",\n      \"details\": \"string\",\n      \"is_home\": true,\n      \"login_required\": true,\n      \"in_navigation\": false,\n      \"soft_root\": false,\n      \"template\": \"string\",\n      \"xframe_options\": \"string\",\n      \"limit_visibility_in_menu\": false,\n      \"language\": \"en\",\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"is_preview\": false,\n      \"application_namespace\": \"string\",\n      \"creation_date\": \"1975-09-09T14:14:14.087Z\",\n      \"changed_date\": \"1983-10-23T23:53:16.585Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e88c26a4-2cd0-47c1-be3e-e7dfc8668e23",
+              "name": "Language not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "pages-list",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "058a6528-7df5-4bcb-86fc-abca1afae6d0",
+          "name": "Root page detail",
+          "request": {
+            "name": "Root page detail",
+            "description": {
+              "content": "Retrieve the root (home) page for the given language, including its placeholders.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "pages",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                },
+                {
+                  "disabled": false,
+                  "key": "html",
+                  "value": "<string>",
+                  "description": "Set to 1 to include server-rendered HTML for placeholder content"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dcb29870-1a5f-4444-ab2d-c6248d520179",
+              "name": "Page content with placeholders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "pages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "html",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"placeholders\": [\n    {\n      \"slot\": \"string\",\n      \"label\": \"string\",\n      \"language\": \"string\",\n      \"details\": \"https://yqI.anfhypQ5up+,\",\n      \"html\": \"\"\n    },\n    {\n      \"slot\": \"string\",\n      \"label\": \"string\",\n      \"language\": \"string\",\n      \"details\": \"http://JHBEnUcSFzFtK.kelmIjrs9EUtLj4C1GWp67BknIHK9EoeHWq,u8xE9LgFtlfQZPkX+hZW7Z2HK2E0mY+fKO\",\n      \"html\": \"\"\n    }\n  ],\n  \"title\": \"string\",\n  \"page_title\": \"string\",\n  \"menu_title\": \"string\",\n  \"meta_description\": \"string\",\n  \"redirect\": \"string\",\n  \"absolute_url\": \"http://fRhyzqKzwGIbaJKhtsAraKGimxSVAGxb.inctrP+zcPlMCAK3b9Qhr3pGSHEK9fc6CO8CR9vf+YZv4\",\n  \"path\": \"string\",\n  \"details\": \"string\",\n  \"is_home\": true,\n  \"login_required\": false,\n  \"in_navigation\": true,\n  \"soft_root\": false,\n  \"template\": \"string\",\n  \"xframe_options\": \"string\",\n  \"limit_visibility_in_menu\": false,\n  \"language\": \"en\",\n  \"languages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"is_preview\": false,\n  \"application_namespace\": \"string\",\n  \"creation_date\": \"1981-01-02T20:56:29.997Z\",\n  \"changed_date\": \"1960-03-03T04:49:37.217Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "410d0484-f4e1-47e0-b1f7-5491d21307a8",
+              "name": "Page not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "pages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "html",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d03ca981-a5d5-48a0-a83f-7875134428e3",
+          "name": "Page detail by path",
+          "request": {
+            "name": "Page detail by path",
+            "description": {
+              "content": "Retrieve a specific page by its URL path for the given language, including its placeholders.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "pages",
+                ":path",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                },
+                {
+                  "disabled": false,
+                  "key": "html",
+                  "value": "<string>",
+                  "description": "Set to 1 to include server-rendered HTML for placeholder content"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "path",
+                  "description": "(Required) URL path of the page (e.g. \"blog/my-post\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "017df03c-ead2-4e13-ad6b-442ec9ce28a1",
+              "name": "Page content with placeholders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "pages",
+                    ":path",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "html",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) URL path of the page (e.g. \"blog/my-post\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"placeholders\": [\n    {\n      \"slot\": \"string\",\n      \"label\": \"string\",\n      \"language\": \"string\",\n      \"details\": \"https://WyatBxUSQWtjXWiR.xonQnhF-uryZeh+uQ9zUBhSJdpio0xCoQdonRp7Ax1IiWgbM5zbcFZh1Ug4NyM\",\n      \"html\": \"\"\n    },\n    {\n      \"slot\": \"string\",\n      \"label\": \"string\",\n      \"language\": \"string\",\n      \"details\": \"https://jdVMvGNsxo.jcsF-hRTnxnWcixgaxAFrk5d2I,N7bto83nEUGNic\",\n      \"html\": \"\"\n    }\n  ],\n  \"title\": \"string\",\n  \"page_title\": \"string\",\n  \"menu_title\": \"string\",\n  \"meta_description\": \"string\",\n  \"redirect\": \"string\",\n  \"absolute_url\": \"http://q.zjlVikmTu-ZEOfDK-auWxRty3UXD1lp445M3ddC.sxsCj\",\n  \"path\": \"string\",\n  \"details\": \"string\",\n  \"is_home\": true,\n  \"login_required\": true,\n  \"in_navigation\": true,\n  \"soft_root\": true,\n  \"template\": \"string\",\n  \"xframe_options\": \"string\",\n  \"limit_visibility_in_menu\": false,\n  \"language\": \"en\",\n  \"languages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"is_preview\": false,\n  \"application_namespace\": \"string\",\n  \"creation_date\": \"1947-03-25T18:23:17.285Z\",\n  \"changed_date\": \"1966-09-27T21:22:31.718Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89f5f26a-8129-4edd-be8d-ab39d8a52efa",
+              "name": "Page not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "pages",
+                    ":path",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "html",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) URL path of the page (e.g. \"blog/my-post\")"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11d74ba9-5c47-4bf1-8cf5-f931306954de",
+          "name": "Search pages",
+          "request": {
+            "name": "Search pages",
+            "description": {
+              "content": "Search pages by a query string for the given language.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "page_search",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Search query string"
+                },
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7617f12b-bc07-4f86-9ec6-0784a7a1f56a",
+              "name": "List of matching pages",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "page_search",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"page_title\": \"string\",\n    \"menu_title\": \"string\",\n    \"meta_description\": \"string\",\n    \"redirect\": \"string\",\n    \"absolute_url\": \"https://EquRQVBzWoTKFOkjOUwXGaOrPLVnp.iwbg,m\",\n    \"path\": \"string\",\n    \"details\": \"string\",\n    \"is_home\": true,\n    \"login_required\": true,\n    \"in_navigation\": false,\n    \"soft_root\": false,\n    \"template\": \"string\",\n    \"xframe_options\": \"string\",\n    \"limit_visibility_in_menu\": false,\n    \"language\": \"en\",\n    \"languages\": [\n      \"string\",\n      \"string\"\n    ],\n    \"is_preview\": false,\n    \"application_namespace\": \"string\",\n    \"creation_date\": \"1981-09-04T11:51:32.714Z\",\n    \"changed_date\": \"1998-02-09T09:39:41.852Z\"\n  },\n  {\n    \"title\": \"string\",\n    \"page_title\": \"string\",\n    \"menu_title\": \"string\",\n    \"meta_description\": \"string\",\n    \"redirect\": \"string\",\n    \"absolute_url\": \"http://B.zvquTkJfwSwtvwb.LM7SuEYY,rzNFNo8ssREr\",\n    \"path\": \"string\",\n    \"details\": \"string\",\n    \"is_home\": false,\n    \"login_required\": false,\n    \"in_navigation\": false,\n    \"soft_root\": true,\n    \"template\": \"string\",\n    \"xframe_options\": \"string\",\n    \"limit_visibility_in_menu\": false,\n    \"language\": \"en\",\n    \"languages\": [\n      \"string\",\n      \"string\"\n    ],\n    \"is_preview\": false,\n    \"application_namespace\": \"string\",\n    \"creation_date\": \"2015-01-09T11:42:32.235Z\",\n    \"changed_date\": \"1981-01-22T15:08:30.045Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b04687a-6199-4a22-b356-4a61251eadb9",
+              "name": "Language not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "page_search",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://example.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fe6401a3-3fa7-46b4-85e3-220a0c0b9cdd",
+    "name": "djangocms-rest Breadcrumbs Pages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.\n\nContact Support:\n Name: Django CMS Association\n Email: info@django-cms.org",
+      "type": "text/plain"
+    }
+  }
+}

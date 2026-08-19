@@ -1,0 +1,504 @@
+{
+  "item": [
+    {
+      "id": "e4835cfa-0a4f-41c0-90ae-7ca066e06d20",
+      "name": "Breadcrumbs",
+      "description": {
+        "content": "Page breadcrumb trails",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d7683401-76f1-4402-b101-f05c14548cb3",
+          "name": "Breadcrumbs (root)",
+          "request": {
+            "name": "Breadcrumbs (root)",
+            "description": {
+              "content": "Returns the breadcrumb trail from the root for the given language.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "breadcrumbs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f83b4083-97e6-4cb1-8d3d-1be058702f87",
+              "name": "Breadcrumb navigation nodes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "breadcrumbs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"http://HzhfCbtf.kmcuma7nxlFYMy8Sx.H6T\",\n    \"api_endpoint\": \"http://V.tchvp3SSO.X1,pzZQOR\",\n    \"attr\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"level\": 6923,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  },\n  {\n    \"title\": \"string\",\n    \"visible\": true,\n    \"selected\": false,\n    \"namespace\": \"string\",\n    \"url\": \"http://HLPnXZSlqPMVC.psbfaCtMLw4wvxZzSPbmF8eYQwXbiqRIB2lhFJYKCNTIWGu+W6\",\n    \"api_endpoint\": \"https://upnhJZVE.pcwecl-FSYtgdbd\",\n    \"attr\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": 6278\n    },\n    \"level\": 4497,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c415b8ba-af4f-427c-9e9d-d498f642a146",
+          "name": "Breadcrumbs by path",
+          "request": {
+            "name": "Breadcrumbs by path",
+            "description": {
+              "content": "Returns the breadcrumb trail to the specified page path.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "breadcrumbs",
+                ":path",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "path",
+                  "description": "(Required) URL path of the target page"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d010166-7ff7-44f2-a42a-500c7f9a4c60",
+              "name": "Breadcrumb navigation nodes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "breadcrumbs",
+                    ":path",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) URL path of the target page"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": false,\n    \"namespace\": \"string\",\n    \"url\": \"https://WPEChbyMEqwHpxEfWqIyTHvPsuVvLEFxs.qzvP-Kx,e1\",\n    \"api_endpoint\": \"http://vGcfNkkcNTnOOFuoprfYr.stxnDCVJbW3ATC,g5IbqYx9xryd,NeKfr3p\",\n    \"attr\": {\n      \"key_0\": 7720.951753224013,\n      \"key_1\": 2964.156975490799,\n      \"key_2\": 1677\n    },\n    \"level\": 9369,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  },\n  {\n    \"title\": \"string\",\n    \"visible\": true,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"http://eXdyToW.kgM2OWQPGAUT+r+JPA4m1gVd+edBkgAMvSa4gU8sZjueICAqGCrzgHS8hMu6M\",\n    \"api_endpoint\": \"http://MsewBoULqDmYxHeTFazWwc.bkxZ6ZFfts82.9+QFK\",\n    \"attr\": {\n      \"key_0\": 8810.012925774365,\n      \"key_1\": false\n    },\n    \"level\": 4233,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "165f2033-c1c1-49e8-9eb1-73bd44df350d",
+          "name": "Breadcrumbs from level",
+          "request": {
+            "name": "Breadcrumbs from level",
+            "description": {
+              "content": "Returns the breadcrumb trail starting from the given level.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "breadcrumbs",
+                ":start_level",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "0",
+                  "key": "start_level",
+                  "description": "(Required) Starting breadcrumb level"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f426ff1a-760c-4bc1-a640-03d577e181ad",
+              "name": "Breadcrumb navigation nodes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "breadcrumbs",
+                    ":start_level",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "0",
+                      "key": "start_level",
+                      "description": "(Required) Starting breadcrumb level"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": false,\n    \"namespace\": \"string\",\n    \"url\": \"https://WPEChbyMEqwHpxEfWqIyTHvPsuVvLEFxs.qzvP-Kx,e1\",\n    \"api_endpoint\": \"http://vGcfNkkcNTnOOFuoprfYr.stxnDCVJbW3ATC,g5IbqYx9xryd,NeKfr3p\",\n    \"attr\": {\n      \"key_0\": 7720.951753224013,\n      \"key_1\": 2964.156975490799,\n      \"key_2\": 1677\n    },\n    \"level\": 9369,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  },\n  {\n    \"title\": \"string\",\n    \"visible\": true,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"http://eXdyToW.kgM2OWQPGAUT+r+JPA4m1gVd+edBkgAMvSa4gU8sZjueICAqGCrzgHS8hMu6M\",\n    \"api_endpoint\": \"http://MsewBoULqDmYxHeTFazWwc.bkxZ6ZFfts82.9+QFK\",\n    \"attr\": {\n      \"key_0\": 8810.012925774365,\n      \"key_1\": false\n    },\n    \"level\": 4233,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bc4a14f-57bf-482d-8991-14896cea4c9a",
+          "name": "Breadcrumbs from level by path",
+          "request": {
+            "name": "Breadcrumbs from level by path",
+            "description": {
+              "content": "Returns the breadcrumb trail from the given level for the specified page path.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":language",
+                "breadcrumbs",
+                ":start_level",
+                ":path",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "preview",
+                  "value": "<string>",
+                  "description": "Set to 1 or true to include draft/unpublished content (requires appropriate permissions)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language",
+                  "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "0",
+                  "key": "start_level",
+                  "description": "(Required) Starting breadcrumb level"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "path",
+                  "description": "(Required) URL path of the target page"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ddadfa8-1191-4c98-a458-9ae37882dc1e",
+              "name": "Breadcrumb navigation nodes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":language",
+                    "breadcrumbs",
+                    ":start_level",
+                    ":path",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "preview",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language",
+                      "description": "(Required) Language code (e.g. \"en\", \"de\", \"fr\")"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "0",
+                      "key": "start_level",
+                      "description": "(Required) Starting breadcrumb level"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "path",
+                      "description": "(Required) URL path of the target page"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"visible\": false,\n    \"selected\": false,\n    \"namespace\": \"string\",\n    \"url\": \"https://WPEChbyMEqwHpxEfWqIyTHvPsuVvLEFxs.qzvP-Kx,e1\",\n    \"api_endpoint\": \"http://vGcfNkkcNTnOOFuoprfYr.stxnDCVJbW3ATC,g5IbqYx9xryd,NeKfr3p\",\n    \"attr\": {\n      \"key_0\": 7720.951753224013,\n      \"key_1\": 2964.156975490799,\n      \"key_2\": 1677\n    },\n    \"level\": 9369,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  },\n  {\n    \"title\": \"string\",\n    \"visible\": true,\n    \"selected\": true,\n    \"namespace\": \"string\",\n    \"url\": \"http://eXdyToW.kgM2OWQPGAUT+r+JPA4m1gVd+edBkgAMvSa4gU8sZjueICAqGCrzgHS8hMu6M\",\n    \"api_endpoint\": \"http://MsewBoULqDmYxHeTFazWwc.bkxZ6ZFfts82.9+QFK\",\n    \"attr\": {\n      \"key_0\": 8810.012925774365,\n      \"key_1\": false\n    },\n    \"level\": 4233,\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/NavigationNode detected>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://example.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7a75486c-dd53-4ed9-a23b-77e361c53536",
+    "name": "djangocms-rest Breadcrumbs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.\n\nContact Support:\n Name: Django CMS Association\n Email: info@django-cms.org",
+      "type": "text/plain"
+    }
+  }
+}
