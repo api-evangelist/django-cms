@@ -25,6 +25,17 @@ tags:
   - Python
   - Headless CMS
   - REST API
+  - Open-Source
+  - Pages
+  - Plugins
+  - Placeholders
+tags_raw:
+  - CMS
+  - Content Management
+  - Django
+  - Python
+  - Headless CMS
+  - REST API
   - Open Source
   - Pages
   - Plugins
@@ -80,6 +91,8 @@ apis:
   humanURL: https://djangocms-rest.readthedocs.io/
   baseURL: https://example.com/api/
   tags:
+  - Language
+  tags_raw:
   - Languages
   properties:
   - type: OpenAPI
