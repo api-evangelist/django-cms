@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: djangocms-rest Breadcrumbs API
   description: Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.
@@ -111,6 +111,14 @@ paths:
                   $ref: '#/components/schemas/NavigationNode'
 components:
   parameters:
+    language:
+      name: language
+      in: path
+      required: true
+      description: Language code (e.g. "en", "de", "fr")
+      schema:
+        type: string
+        example: en
     preview:
       name: preview
       in: query
@@ -130,35 +138,30 @@ components:
       schema:
         type: integer
         default: 0
-    language:
-      name: language
-      in: path
-      required: true
-      description: Language code (e.g. "en", "de", "fr")
-      schema:
-        type: string
-        example: en
   schemas:
     NavigationNode:
       type: object
       description: A navigation menu node, optionally with nested children
       properties:
         namespace:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Menu namespace (for apphook menus)
         title:
           type: string
           description: Display title for the menu item
         url:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
           description: Absolute frontend URL for the menu item
         api_endpoint:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
           description: API URL to fetch full page detail for this menu item
         visible:
           type: boolean
@@ -167,13 +170,15 @@ components:
           type: boolean
           description: Whether this node represents the current page
         attr:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           description: Additional attributes from the menu template tag (e.g. is_home, auth_required)
           additionalProperties: true
         level:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
           description: Nesting level of this menu node (0 = root)
         children:
           type: array

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: djangocms-rest Breadcrumbs Pages API
+  title: djangocms-rest Pages API
   description: Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.
   version: 1.0.0
   contact:
@@ -196,6 +196,10 @@ components:
             $ref: '#/components/schemas/PageMeta'
           default: []
           description: Child pages in the tree
+    PageList:
+      allOf:
+      - $ref: '#/components/schemas/PageBase'
+      description: Flat page representation used in list and search results
     PageBase:
       type: object
       description: Core fields shared by all page representations
@@ -216,9 +220,10 @@ components:
           type: string
           description: SEO meta description
         redirect:
-          type: string
+          type:
+          - string
+          - 'null'
           maxLength: 2048
-          nullable: true
           description: Redirect URL if configured
         absolute_url:
           type: string
@@ -253,8 +258,9 @@ components:
           maxLength: 50
           description: X-Frame-Options header value
         limit_visibility_in_menu:
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
           default: false
           description: Whether menu visibility is restricted
         language:
@@ -272,9 +278,10 @@ components:
           default: false
           description: Whether this response is in preview/draft mode
         application_namespace:
-          type: string
+          type:
+          - string
+          - 'null'
           maxLength: 200
-          nullable: true
           description: Application namespace if the page is an apphook
         creation_date:
           type: string
@@ -284,10 +291,6 @@ components:
           type: string
           format: date-time
           description: When the page was last modified
-    PageList:
-      allOf:
-      - $ref: '#/components/schemas/PageBase'
-      description: Flat page representation used in list and search results
     PaginatedPageList:
       type: object
       description: Paginated list of pages
@@ -296,14 +299,16 @@ components:
           type: integer
           description: Total number of pages
         next:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
           description: URL to next page of results
         previous:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
           description: URL to previous page of results
         results:
           type: array
@@ -321,6 +326,14 @@ components:
         - '1'
         - 'true'
         - 'false'
+    language:
+      name: language
+      in: path
+      required: true
+      description: Language code (e.g. "en", "de", "fr")
+      schema:
+        type: string
+        example: en
     html:
       name: html
       in: query
@@ -330,14 +343,6 @@ components:
         enum:
         - '0'
         - '1'
-    language:
-      name: language
-      in: path
-      required: true
-      description: Language code (e.g. "en", "de", "fr")
-      schema:
-        type: string
-        example: en
 externalDocs:
   description: djangocms-rest Documentation
   url: https://djangocms-rest.readthedocs.io/

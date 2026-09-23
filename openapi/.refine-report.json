@@ -1,13 +1,7 @@
 {
   "provider": "django-cms",
   "sources": [
-    "django-cms-breadcrumbs-api-openapi.yml",
-    "django-cms-health-api-openapi.yml",
-    "django-cms-languages-api-openapi.yml",
-    "django-cms-menus-api-openapi.yml",
-    "django-cms-pages-api-openapi.yml",
-    "django-cms-placeholders-api-openapi.yml",
-    "django-cms-plugins-api-openapi.yml"
+    "_original/djangocms-rest-openapi.yml"
   ],
   "outputs": [
     "django-cms-breadcrumbs-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "djangocms-rest-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "django-cms-breadcrumbs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "django-cms-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "django-cms-languages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "django-cms-menus-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "django-cms-pages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "django-cms-placeholders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "django-cms-plugins-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

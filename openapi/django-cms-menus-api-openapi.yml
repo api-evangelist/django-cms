@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: djangocms-rest Breadcrumbs Menus API
+  title: djangocms-rest Menus API
   description: Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.
   version: 1.0.0
   contact:
@@ -266,13 +266,6 @@ components:
       description: Number of sibling levels to include in submenu
       schema:
         type: integer
-    root_level:
-      name: root_level
-      in: path
-      required: true
-      description: The root level for the submenu
-      schema:
-        type: integer
     preview:
       name: preview
       in: query
@@ -284,22 +277,13 @@ components:
         - '1'
         - 'true'
         - 'false'
-    from_level:
-      name: from_level
+    levels:
+      name: levels
       in: path
       required: true
-      description: Starting menu level (0 = root)
+      description: Number of submenu levels to include
       schema:
         type: integer
-        default: 0
-    extra_inactive:
-      name: extra_inactive
-      in: path
-      required: true
-      description: Extra levels to show for inactive branches
-      schema:
-        type: integer
-        default: 0
     extra_active:
       name: extra_active
       in: path
@@ -308,6 +292,21 @@ components:
       schema:
         type: integer
         default: 1000
+    extra_inactive:
+      name: extra_inactive
+      in: path
+      required: true
+      description: Extra levels to show for inactive branches
+      schema:
+        type: integer
+        default: 0
+    root_level:
+      name: root_level
+      in: path
+      required: true
+      description: The root level for the submenu
+      schema:
+        type: integer
     to_level:
       name: to_level
       in: path
@@ -316,20 +315,6 @@ components:
       schema:
         type: integer
         default: 100
-    root_id:
-      name: root_id
-      in: path
-      required: true
-      description: The reverse_id of the root page node to anchor the menu
-      schema:
-        type: string
-    levels:
-      name: levels
-      in: path
-      required: true
-      description: Number of submenu levels to include
-      schema:
-        type: integer
     language:
       name: language
       in: path
@@ -338,27 +323,45 @@ components:
       schema:
         type: string
         example: en
+    root_id:
+      name: root_id
+      in: path
+      required: true
+      description: The reverse_id of the root page node to anchor the menu
+      schema:
+        type: string
+    from_level:
+      name: from_level
+      in: path
+      required: true
+      description: Starting menu level (0 = root)
+      schema:
+        type: integer
+        default: 0
   schemas:
     NavigationNode:
       type: object
       description: A navigation menu node, optionally with nested children
       properties:
         namespace:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Menu namespace (for apphook menus)
         title:
           type: string
           description: Display title for the menu item
         url:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
           description: Absolute frontend URL for the menu item
         api_endpoint:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
           description: API URL to fetch full page detail for this menu item
         visible:
           type: boolean
@@ -367,13 +370,15 @@ components:
           type: boolean
           description: Whether this node represents the current page
         attr:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           description: Additional attributes from the menu template tag (e.g. is_home, auth_required)
           additionalProperties: true
         level:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
           description: Nesting level of this menu node (0 = root)
         children:
           type: array
