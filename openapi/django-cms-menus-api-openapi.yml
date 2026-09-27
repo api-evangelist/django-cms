@@ -259,13 +259,13 @@ paths:
                   $ref: '#/components/schemas/NavigationNode'
 components:
   parameters:
-    nephews:
-      name: nephews
+    root_id:
+      name: root_id
       in: path
       required: true
-      description: Number of sibling levels to include in submenu
+      description: The reverse_id of the root page node to anchor the menu
       schema:
-        type: integer
+        type: string
     preview:
       name: preview
       in: query
@@ -277,13 +277,29 @@ components:
         - '1'
         - 'true'
         - 'false'
-    levels:
-      name: levels
+    nephews:
+      name: nephews
       in: path
       required: true
-      description: Number of submenu levels to include
+      description: Number of sibling levels to include in submenu
       schema:
         type: integer
+    language:
+      name: language
+      in: path
+      required: true
+      description: Language code (e.g. "en", "de", "fr")
+      schema:
+        type: string
+        example: en
+    to_level:
+      name: to_level
+      in: path
+      required: true
+      description: Maximum menu level to include
+      schema:
+        type: integer
+        default: 100
     extra_active:
       name: extra_active
       in: path
@@ -292,11 +308,11 @@ components:
       schema:
         type: integer
         default: 1000
-    extra_inactive:
-      name: extra_inactive
+    from_level:
+      name: from_level
       in: path
       required: true
-      description: Extra levels to show for inactive branches
+      description: Starting menu level (0 = root)
       schema:
         type: integer
         default: 0
@@ -307,37 +323,21 @@ components:
       description: The root level for the submenu
       schema:
         type: integer
-    to_level:
-      name: to_level
+    extra_inactive:
+      name: extra_inactive
       in: path
       required: true
-      description: Maximum menu level to include
-      schema:
-        type: integer
-        default: 100
-    language:
-      name: language
-      in: path
-      required: true
-      description: Language code (e.g. "en", "de", "fr")
-      schema:
-        type: string
-        example: en
-    root_id:
-      name: root_id
-      in: path
-      required: true
-      description: The reverse_id of the root page node to anchor the menu
-      schema:
-        type: string
-    from_level:
-      name: from_level
-      in: path
-      required: true
-      description: Starting menu level (0 = root)
+      description: Extra levels to show for inactive branches
       schema:
         type: integer
         default: 0
+    levels:
+      name: levels
+      in: path
+      required: true
+      description: Number of submenu levels to include
+      schema:
+        type: integer
   schemas:
     NavigationNode:
       type: object

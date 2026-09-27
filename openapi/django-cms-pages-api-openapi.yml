@@ -143,63 +143,36 @@ paths:
         '404':
           description: Language not found
 components:
+  parameters:
+    preview:
+      name: preview
+      in: query
+      description: Set to 1 or true to include draft/unpublished content (requires appropriate permissions)
+      schema:
+        type: string
+        enum:
+        - '0'
+        - '1'
+        - 'true'
+        - 'false'
+    language:
+      name: language
+      in: path
+      required: true
+      description: Language code (e.g. "en", "de", "fr")
+      schema:
+        type: string
+        example: en
+    html:
+      name: html
+      in: query
+      description: Set to 1 to include server-rendered HTML for placeholder content
+      schema:
+        type: string
+        enum:
+        - '0'
+        - '1'
   schemas:
-    PageContent:
-      allOf:
-      - $ref: '#/components/schemas/PageBase'
-      description: Full page detail including placeholder content
-      properties:
-        placeholders:
-          type: array
-          items:
-            $ref: '#/components/schemas/Placeholder'
-          description: Ordered list of placeholders defined by the page template
-    Placeholder:
-      type: object
-      description: A placeholder containing structured plugin content
-      properties:
-        slot:
-          type: string
-          description: Template slot name for this placeholder
-        label:
-          type: string
-          description: Human-readable label for the placeholder
-        language:
-          type: string
-          description: Language code of the content
-        content:
-          type: array
-          items:
-            type: object
-          description: Nested list of serialized plugin data objects. Each object has a "plugin_type" field identifying its type, plus plugin-specific properties.
-        details:
-          type: string
-          format: uri
-          description: API URL to retrieve this placeholder directly
-        html:
-          type: string
-          default: ''
-          description: Server-rendered HTML output (only present when ?html=1 is requested)
-      required:
-      - slot
-      - label
-      - language
-      - details
-    PageMeta:
-      allOf:
-      - $ref: '#/components/schemas/PageBase'
-      description: Page with nested children for tree representation
-      properties:
-        children:
-          type: array
-          items:
-            $ref: '#/components/schemas/PageMeta'
-          default: []
-          description: Child pages in the tree
-    PageList:
-      allOf:
-      - $ref: '#/components/schemas/PageBase'
-      description: Flat page representation used in list and search results
     PageBase:
       type: object
       description: Core fields shared by all page representations
@@ -291,6 +264,41 @@ components:
           type: string
           format: date-time
           description: When the page was last modified
+    PageList:
+      allOf:
+      - $ref: '#/components/schemas/PageBase'
+      description: Flat page representation used in list and search results
+    Placeholder:
+      type: object
+      description: A placeholder containing structured plugin content
+      properties:
+        slot:
+          type: string
+          description: Template slot name for this placeholder
+        label:
+          type: string
+          description: Human-readable label for the placeholder
+        language:
+          type: string
+          description: Language code of the content
+        content:
+          type: array
+          items:
+            type: object
+          description: Nested list of serialized plugin data objects. Each object has a "plugin_type" field identifying its type, plus plugin-specific properties.
+        details:
+          type: string
+          format: uri
+          description: API URL to retrieve this placeholder directly
+        html:
+          type: string
+          default: ''
+          description: Server-rendered HTML output (only present when ?html=1 is requested)
+      required:
+      - slot
+      - label
+      - language
+      - details
     PaginatedPageList:
       type: object
       description: Paginated list of pages
@@ -314,35 +322,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PageList'
-  parameters:
-    preview:
-      name: preview
-      in: query
-      description: Set to 1 or true to include draft/unpublished content (requires appropriate permissions)
-      schema:
-        type: string
-        enum:
-        - '0'
-        - '1'
-        - 'true'
-        - 'false'
-    language:
-      name: language
-      in: path
-      required: true
-      description: Language code (e.g. "en", "de", "fr")
-      schema:
-        type: string
-        example: en
-    html:
-      name: html
-      in: query
-      description: Set to 1 to include server-rendered HTML for placeholder content
-      schema:
-        type: string
-        enum:
-        - '0'
-        - '1'
+    PageMeta:
+      allOf:
+      - $ref: '#/components/schemas/PageBase'
+      description: Page with nested children for tree representation
+      properties:
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/PageMeta'
+          default: []
+          description: Child pages in the tree
+    PageContent:
+      allOf:
+      - $ref: '#/components/schemas/PageBase'
+      description: Full page detail including placeholder content
+      properties:
+        placeholders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Placeholder'
+          description: Ordered list of placeholders defined by the page template
 externalDocs:
   description: djangocms-rest Documentation
   url: https://djangocms-rest.readthedocs.io/

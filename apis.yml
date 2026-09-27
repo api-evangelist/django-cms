@@ -32,6 +32,9 @@ url: https://raw.githubusercontent.com/api-evangelist/django-cms/refs/heads/main
 created: '2026-06-13'
 modified: '2026-06-13'
 specificationVersion: '0.23'
+x-docs-platform: readthedocs
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-09-25
 tags:
   - CMS
   - Content Management
@@ -39,7 +42,7 @@ tags:
   - Python
   - Headless CMS
   - REST API
-  - Open-Source
+  - Open Source
   - Pages
   - Plugins
   - Placeholders
@@ -54,6 +57,7 @@ tags_raw:
   - Pages
   - Plugins
   - Placeholders
+  - Open-Source
 apis:
 - aid: django-cms:django-cms-breadcrumbs-api
   name: Django CMS Breadcrumbs API
