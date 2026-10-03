@@ -162,6 +162,14 @@ components:
       - visible
       - selected
   parameters:
+    start_level:
+      name: start_level
+      in: path
+      required: true
+      description: Starting breadcrumb level
+      schema:
+        type: integer
+        default: 0
     preview:
       name: preview
       in: query
@@ -173,14 +181,6 @@ components:
         - '1'
         - 'true'
         - 'false'
-    start_level:
-      name: start_level
-      in: path
-      required: true
-      description: Starting breadcrumb level
-      schema:
-        type: integer
-        default: 0
     language:
       name: language
       in: path

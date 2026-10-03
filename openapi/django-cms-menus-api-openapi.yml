@@ -259,13 +259,44 @@ paths:
                   $ref: '#/components/schemas/NavigationNode'
 components:
   parameters:
-    root_id:
-      name: root_id
+    from_level:
+      name: from_level
       in: path
       required: true
-      description: The reverse_id of the root page node to anchor the menu
+      description: Starting menu level (0 = root)
       schema:
-        type: string
+        type: integer
+        default: 0
+    nephews:
+      name: nephews
+      in: path
+      required: true
+      description: Number of sibling levels to include in submenu
+      schema:
+        type: integer
+    levels:
+      name: levels
+      in: path
+      required: true
+      description: Number of submenu levels to include
+      schema:
+        type: integer
+    extra_active:
+      name: extra_active
+      in: path
+      required: true
+      description: Extra levels to show for active branches
+      schema:
+        type: integer
+        default: 1000
+    extra_inactive:
+      name: extra_inactive
+      in: path
+      required: true
+      description: Extra levels to show for inactive branches
+      schema:
+        type: integer
+        default: 0
     preview:
       name: preview
       in: query
@@ -277,13 +308,6 @@ components:
         - '1'
         - 'true'
         - 'false'
-    nephews:
-      name: nephews
-      in: path
-      required: true
-      description: Number of sibling levels to include in submenu
-      schema:
-        type: integer
     language:
       name: language
       in: path
@@ -292,6 +316,20 @@ components:
       schema:
         type: string
         example: en
+    root_level:
+      name: root_level
+      in: path
+      required: true
+      description: The root level for the submenu
+      schema:
+        type: integer
+    root_id:
+      name: root_id
+      in: path
+      required: true
+      description: The reverse_id of the root page node to anchor the menu
+      schema:
+        type: string
     to_level:
       name: to_level
       in: path
@@ -300,44 +338,6 @@ components:
       schema:
         type: integer
         default: 100
-    extra_active:
-      name: extra_active
-      in: path
-      required: true
-      description: Extra levels to show for active branches
-      schema:
-        type: integer
-        default: 1000
-    from_level:
-      name: from_level
-      in: path
-      required: true
-      description: Starting menu level (0 = root)
-      schema:
-        type: integer
-        default: 0
-    root_level:
-      name: root_level
-      in: path
-      required: true
-      description: The root level for the submenu
-      schema:
-        type: integer
-    extra_inactive:
-      name: extra_inactive
-      in: path
-      required: true
-      description: Extra levels to show for inactive branches
-      schema:
-        type: integer
-        default: 0
-    levels:
-      name: levels
-      in: path
-      required: true
-      description: Number of submenu levels to include
-      schema:
-        type: integer
   schemas:
     NavigationNode:
       type: object
