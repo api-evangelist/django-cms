@@ -259,14 +259,13 @@ paths:
                   $ref: '#/components/schemas/NavigationNode'
 components:
   parameters:
-    from_level:
-      name: from_level
+    root_level:
+      name: root_level
       in: path
       required: true
-      description: Starting menu level (0 = root)
+      description: The root level for the submenu
       schema:
         type: integer
-        default: 0
     nephews:
       name: nephews
       in: path
@@ -289,14 +288,6 @@ components:
       schema:
         type: integer
         default: 1000
-    extra_inactive:
-      name: extra_inactive
-      in: path
-      required: true
-      description: Extra levels to show for inactive branches
-      schema:
-        type: integer
-        default: 0
     preview:
       name: preview
       in: query
@@ -308,21 +299,6 @@ components:
         - '1'
         - 'true'
         - 'false'
-    language:
-      name: language
-      in: path
-      required: true
-      description: Language code (e.g. "en", "de", "fr")
-      schema:
-        type: string
-        example: en
-    root_level:
-      name: root_level
-      in: path
-      required: true
-      description: The root level for the submenu
-      schema:
-        type: integer
     root_id:
       name: root_id
       in: path
@@ -330,6 +306,22 @@ components:
       description: The reverse_id of the root page node to anchor the menu
       schema:
         type: string
+    from_level:
+      name: from_level
+      in: path
+      required: true
+      description: Starting menu level (0 = root)
+      schema:
+        type: integer
+        default: 0
+    extra_inactive:
+      name: extra_inactive
+      in: path
+      required: true
+      description: Extra levels to show for inactive branches
+      schema:
+        type: integer
+        default: 0
     to_level:
       name: to_level
       in: path
@@ -338,6 +330,14 @@ components:
       schema:
         type: integer
         default: 100
+    language:
+      name: language
+      in: path
+      required: true
+      description: Language code (e.g. "en", "de", "fr")
+      schema:
+        type: string
+        example: en
   schemas:
     NavigationNode:
       type: object

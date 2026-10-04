@@ -58,6 +58,35 @@ paths:
         '404':
           description: Placeholder not found
 components:
+  parameters:
+    html:
+      name: html
+      in: query
+      description: Set to 1 to include server-rendered HTML for placeholder content
+      schema:
+        type: string
+        enum:
+        - '0'
+        - '1'
+    preview:
+      name: preview
+      in: query
+      description: Set to 1 or true to include draft/unpublished content (requires appropriate permissions)
+      schema:
+        type: string
+        enum:
+        - '0'
+        - '1'
+        - 'true'
+        - 'false'
+    language:
+      name: language
+      in: path
+      required: true
+      description: Language code (e.g. "en", "de", "fr")
+      schema:
+        type: string
+        example: en
   schemas:
     Placeholder:
       type: object
@@ -90,35 +119,6 @@ components:
       - label
       - language
       - details
-  parameters:
-    html:
-      name: html
-      in: query
-      description: Set to 1 to include server-rendered HTML for placeholder content
-      schema:
-        type: string
-        enum:
-        - '0'
-        - '1'
-    preview:
-      name: preview
-      in: query
-      description: Set to 1 or true to include draft/unpublished content (requires appropriate permissions)
-      schema:
-        type: string
-        enum:
-        - '0'
-        - '1'
-        - 'true'
-        - 'false'
-    language:
-      name: language
-      in: path
-      required: true
-      description: Language code (e.g. "en", "de", "fr")
-      schema:
-        type: string
-        example: en
 externalDocs:
   description: djangocms-rest Documentation
   url: https://djangocms-rest.readthedocs.io/

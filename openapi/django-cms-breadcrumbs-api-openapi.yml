@@ -110,6 +110,34 @@ paths:
                 items:
                   $ref: '#/components/schemas/NavigationNode'
 components:
+  parameters:
+    language:
+      name: language
+      in: path
+      required: true
+      description: Language code (e.g. "en", "de", "fr")
+      schema:
+        type: string
+        example: en
+    start_level:
+      name: start_level
+      in: path
+      required: true
+      description: Starting breadcrumb level
+      schema:
+        type: integer
+        default: 0
+    preview:
+      name: preview
+      in: query
+      description: Set to 1 or true to include draft/unpublished content (requires appropriate permissions)
+      schema:
+        type: string
+        enum:
+        - '0'
+        - '1'
+        - 'true'
+        - 'false'
   schemas:
     NavigationNode:
       type: object
@@ -161,34 +189,6 @@ components:
       - title
       - visible
       - selected
-  parameters:
-    start_level:
-      name: start_level
-      in: path
-      required: true
-      description: Starting breadcrumb level
-      schema:
-        type: integer
-        default: 0
-    preview:
-      name: preview
-      in: query
-      description: Set to 1 or true to include draft/unpublished content (requires appropriate permissions)
-      schema:
-        type: string
-        enum:
-        - '0'
-        - '1'
-        - 'true'
-        - 'false'
-    language:
-      name: language
-      in: path
-      required: true
-      description: Language code (e.g. "en", "de", "fr")
-      schema:
-        type: string
-        example: en
 externalDocs:
   description: djangocms-rest Documentation
   url: https://djangocms-rest.readthedocs.io/
