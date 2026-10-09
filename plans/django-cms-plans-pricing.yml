@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Django CMS Plans & Pricing
 description: Django CMS is an open-source content management system released under the BSD-3-Clause license. There are no commercial pricing tiers for the software itself — it is free to download, use, and modify. The Django CMS Association offers membership tiers for organizations and individuals who wish to support the long-term development of the project.
 url: https://www.django-cms.org/en/
@@ -37,3 +41,28 @@ notes:
   - Django CMS itself carries no license fees. Costs are typically from self-hosting infrastructure, custom development, or optional paid support from third-party service providers.
   - djangocms-rest (REST API package) is also free and open-source under BSD-3-Clause.
   - For enterprise support, third-party vendors and agencies in the community offer commercial service contracts.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  units: []
+  plans:
+  - name: Open Source (Community)
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Django CMS Association Membership (Individual)
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Django CMS Association Membership (Corporate/Silver/Gold)
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
