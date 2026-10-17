@@ -143,6 +143,35 @@ paths:
         '404':
           description: Language not found
 components:
+  parameters:
+    language:
+      name: language
+      in: path
+      required: true
+      description: Language code (e.g. "en", "de", "fr")
+      schema:
+        type: string
+        example: en
+    preview:
+      name: preview
+      in: query
+      description: Set to 1 or true to include draft/unpublished content (requires appropriate permissions)
+      schema:
+        type: string
+        enum:
+        - '0'
+        - '1'
+        - 'true'
+        - 'false'
+    html:
+      name: html
+      in: query
+      description: Set to 1 to include server-rendered HTML for placeholder content
+      schema:
+        type: string
+        enum:
+        - '0'
+        - '1'
   schemas:
     PageMeta:
       allOf:
@@ -155,6 +184,16 @@ components:
             $ref: '#/components/schemas/PageMeta'
           default: []
           description: Child pages in the tree
+    PageContent:
+      allOf:
+      - $ref: '#/components/schemas/PageBase'
+      description: Full page detail including placeholder content
+      properties:
+        placeholders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Placeholder'
+          description: Ordered list of placeholders defined by the page template
     Placeholder:
       type: object
       description: A placeholder containing structured plugin content
@@ -186,16 +225,6 @@ components:
       - label
       - language
       - details
-    PageContent:
-      allOf:
-      - $ref: '#/components/schemas/PageBase'
-      description: Full page detail including placeholder content
-      properties:
-        placeholders:
-          type: array
-          items:
-            $ref: '#/components/schemas/Placeholder'
-          description: Ordered list of placeholders defined by the page template
     PageList:
       allOf:
       - $ref: '#/components/schemas/PageBase'
@@ -314,35 +343,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PageList'
-  parameters:
-    preview:
-      name: preview
-      in: query
-      description: Set to 1 or true to include draft/unpublished content (requires appropriate permissions)
-      schema:
-        type: string
-        enum:
-        - '0'
-        - '1'
-        - 'true'
-        - 'false'
-    language:
-      name: language
-      in: path
-      required: true
-      description: Language code (e.g. "en", "de", "fr")
-      schema:
-        type: string
-        example: en
-    html:
-      name: html
-      in: query
-      description: Set to 1 to include server-rendered HTML for placeholder content
-      schema:
-        type: string
-        enum:
-        - '0'
-        - '1'
 externalDocs:
   description: djangocms-rest Documentation
   url: https://djangocms-rest.readthedocs.io/

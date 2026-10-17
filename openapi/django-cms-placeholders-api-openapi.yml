@@ -59,15 +59,6 @@ paths:
           description: Placeholder not found
 components:
   parameters:
-    html:
-      name: html
-      in: query
-      description: Set to 1 to include server-rendered HTML for placeholder content
-      schema:
-        type: string
-        enum:
-        - '0'
-        - '1'
     preview:
       name: preview
       in: query
@@ -87,6 +78,15 @@ components:
       schema:
         type: string
         example: en
+    html:
+      name: html
+      in: query
+      description: Set to 1 to include server-rendered HTML for placeholder content
+      schema:
+        type: string
+        enum:
+        - '0'
+        - '1'
   schemas:
     Placeholder:
       type: object
