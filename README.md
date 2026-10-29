@@ -1,4 +1,4 @@
-# Django CMS (django-cms)
+# Django CMS
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,69 +66,145 @@
 
 Django CMS is an open-source, enterprise-grade content management system built on Django and Python. It provides a REST API via the djangocms-rest package (built on Django REST Framework and drf-spectacular) that exposes pages, plugins, placeholders, navigation menus, breadcrumbs, and content structures as a browsable, read-only JSON/OpenAPI 3 interface. The API enables headless CMS deployments, allowing decoupled frontend applications — SPAs, static site generators, and mobile apps — to consume CMS-managed content with full multi-language and multi-site support.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/django-cms/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/django-cms/refs/heads/main/apis.yml)
+**Areas:** CMS · Content Management · Django · Python · Headless CMS · REST API · Open Source · Pages · Plugins · Placeholders
 
-## Tags
+## Django CMS on APIs.io
 
-- CMS
-- Content Management
-- Django
-- Python
-- Headless CMS
-- REST API
-- Open Source
-- Pages
-- Plugins
-- Placeholders
+Everything profiled for Django CMS is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/django-cms/](https://apis.io/providers/django-cms/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-06-13
-- **Modified:** 2026-06-13
+- [Django CMS Breadcrumbs API](https://apis.io/apis/django-cms/django-cms-breadcrumbs-api/) — Page breadcrumb trails
+- [Django CMS Health API](https://apis.io/apis/django-cms/django-cms-health-api/) — Health check endpoint for monitoring
+- [Django CMS Languages API](https://apis.io/apis/django-cms/django-cms-languages-api/) — Site language configuration
+- [Django CMS Menus API](https://apis.io/apis/django-cms/django-cms-menus-api/) — Navigation menu structures
+- [Django CMS Pages API](https://apis.io/apis/django-cms/django-cms-pages-api/) — CMS page content and tree structure
+- [Django CMS Placeholders API](https://apis.io/apis/django-cms/django-cms-placeholders-api/) — Placeholder content with nested plugin data
+- [Django CMS Plugins API](https://apis.io/apis/django-cms/django-cms-plugins-api/) — Plugin type definitions and schema
 
-## APIs
+### Published properties
 
-### djangocms-rest API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Read-only REST/JSON API for Django CMS that enables decoupled frontend applications to consume CMS-managed content. Built on Django REST Framework with OpenAPI 3 schema generation via drf-spectacular. Exposes endpoints for languages, pages, page trees, page search, placeholders, plugins, navigation menus, breadcrumbs, and a health check. Supports multi-language, multi-site, draft/preview access, and is compatible with Redis/Memcached caching.
+#### Agentic access (1)
 
-- **Human URL:** [https://djangocms-rest.readthedocs.io/](https://djangocms-rest.readthedocs.io/)
-- **Base URL:** `https://example.com/api/`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Django Cms Agentic Access](https://apis.io/agentic-access/django-cms/django-cms-agentic-access/)
 
-- Pages
-- Plugins
-- Placeholders
-- Navigation
-- Headless CMS
-- REST
-- OpenAPI
+#### JSON Schema (1)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://djangocms-rest.readthedocs.io/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/django-cms/main/openapi/djangocms-rest-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-schema/djangocms-page-content-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](https://raw.githubusercontent.com/api-evangelist/django-cms/main/json-ld/djangocms-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [GitHub Repository](https://github.com/django-cms/djangocms-rest)
-- [Py P I](https://pypi.org/project/djangocms-rest/)
+- [Django CMS Page Content](https://apis.io/schemas/django-cms/djangocms-page-content/)
 
-## Common Properties
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Djangocms Context](https://apis.io/jsonld/django-cms/djangocms-context/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [djangocms-rest Breadcrumbs API](https://apis.io/collections/django-cms/open-django-cms-breadcrumbs-api/)
+- [djangocms-rest Breadcrumbs Health API](https://apis.io/collections/django-cms/open-django-cms-health-api/)
+- [djangocms-rest Breadcrumbs Languages API](https://apis.io/collections/django-cms/open-django-cms-languages-api/)
+- [djangocms-rest Breadcrumbs Menus API](https://apis.io/collections/django-cms/open-django-cms-menus-api/)
+- [djangocms-rest Breadcrumbs Pages API](https://apis.io/collections/django-cms/open-django-cms-pages-api/)
+- [djangocms-rest Breadcrumbs Placeholders API](https://apis.io/collections/django-cms/open-django-cms-placeholders-api/)
+- [djangocms-rest Breadcrumbs Plugins API](https://apis.io/collections/django-cms/open-django-cms-plugins-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Django CMS — jsonschema rules](https://apis.io/rules/django-cms/django-cms-jsonschema-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Django Cms Domain Security](https://apis.io/security/django-cms/django-cms-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Django Cms Plans Pricing](https://apis.io/plans/django-cms/django-cms-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Django Cms Rate Limits](https://apis.io/rate-limits/django-cms/django-cms-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Django Cms Finops](https://apis.io/finops/django-cms/django-cms-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.django-cms.org/en/)
 - [Documentation](https://docs.django-cms.org/en/latest/)
-- [Git Hub Org](https://github.com/django-cms)
-- [LinkedIn](https://www.linkedin.com/company/django-cms-association)
-- [Blog](https://www.django-cms.org/en/blog/)
 - [Pricing](https://www.django-cms.org/en/)
-- [Status Page](https://status.django-cms.org/)
-- [X (Twitter)](https://x.com/djangocms)
-- [Plans](plans/django-cms-plans-pricing.yml)
-- [Rate Limits](rate-limits/django-cms-rate-limits.yml)
-- [Fin Ops](finops/django-cms-finops.yml)
+- [Blog](https://www.django-cms.org/en/blog/)
+- [Status](https://status.django-cms.org/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 30.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 51.2 |
+| Contract governance | 9.8 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 11.9 |
+| Access clarity | 18.4 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/django-cms/](https://apis.io/providers/django-cms/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Django CMS: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/django-cms/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
